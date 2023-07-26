@@ -8,20 +8,6 @@ Version      : 1.0
 {
 	"use strict";
 	
-	$('.nav-link').click(function() {
-		// alert('here');
-
-		setTimeout(function() {
-			var y = $(window).scrollTop();  //your current y position on the page
-			$(window).scrollTop(y-50);	
-			// const destination = $("a[name='"+ window.location.hash +"']");
-			// $('html,body').animate({
-			// 	scrollTop: destination.offset().top
-			// },'slow');
-						
-		},300);
-	});
-
 	// Preloader
 	jQuery(window).on('load', function() {
 		preloader();
@@ -44,13 +30,11 @@ Version      : 1.0
 	
 	// Testimonials Carousel
 	jQuery(".testimonial-carousel").owlCarousel({
-		smartSpeed: 1000,
 		loop:true,
 		margin: 30,
 		nav: false,
 		dots: true,
 		autoplay: true,
-		autoplayTimeout: 10000,
 		responsiveClass: true,
 		responsive:{
 			0:{
@@ -60,10 +44,10 @@ Version      : 1.0
 				items:2,
 			},
 			768:{
-				items:3,
+				items:2,
 			},
 			992:{
-				items:3,
+				items:2,
 			}
 		}
 	});
@@ -140,7 +124,7 @@ Version      : 1.0
 		$firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
 		
 	//Initialize carousel 
-	$myCarousel.carousel({});
+	$myCarousel.carousel();
 	
 	//Animate captions in first slide on page load 
 	doAnimations($firstAnimatingElems);
@@ -169,8 +153,6 @@ Version      : 1.0
 			top = top > 0 ? top : 0;
 			$clone.remove();
 			jQuery(this).find('.modal-content').css("margin-top", top);
-			jQuery(this).find('.modal-content').css("height", window.innerHeight-100);
-			jQuery(this).find('.modal-content').css("overflow", "auto");
 		});
 	}
 		
@@ -183,8 +165,6 @@ Version      : 1.0
 	jQuery('.tilt-img').tilt({
 		maxTilt:7					
 	});
-	
-
 	
 })(jQuery);	
 	

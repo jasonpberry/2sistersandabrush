@@ -51,7 +51,7 @@ a{
 	color:#333;
 }
 a:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 input:focus,
 textarea:focus,
@@ -72,16 +72,6 @@ body{
 	position:relative;
 	overflow-x:hidden;
 }
-
-.logo-text {
-	font-family: 'Sacramento', sans-serif;
-	font-size: 40px;
-	/* color: #C9A9A6; */
-	color: black;
-	position: absolute;
-	top: 15px;
-}
-
 h1,
 h2,
 h3,
@@ -112,7 +102,7 @@ h3{
 }
 h4{
 	font-size:14px;
-	color:#6d6d6d;
+	color:#929292;
 	font-weight:400;
 	margin:0 0 20px;
 }
@@ -123,14 +113,14 @@ h5{
 h6{
 	font-size:14px;
 	line-height:18px;
-	color:#333;
+	color:#999;
 	font-weight:400;
 	margin:0 0 10px;
 }
 p {
     font-size: 16px;
     line-height: 28px;
-    color: #6d6d6d;
+    color: #929292;
     margin: 0 0 25px;
 }
 
@@ -166,7 +156,7 @@ p {
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
-	background-color: #C9A9A6;
+	background-color: #7d3c92;
 	opacity: 0.6;
 	position: absolute;
 	top: 0;
@@ -207,10 +197,10 @@ p {
 }
 .btn.btn-default{
 	line-height: 26px;
-    border: 2px solid #C9A9A6;
+    border: 2px solid #7d3c92;
     border-radius: 27px;
     padding: 12px 30px;
-    color: #C9A9A6;
+    color: #7d3c92;
     font-weight: 500;
 	text-transform:capitalize;
 	box-shadow:none!important;
@@ -220,25 +210,25 @@ p {
 .btn-primary:not(:disabled):not(.disabled):active, 
 .show>.btn-primary.dropdown-toggle{
 	line-height: 26px;
-    border: 2px solid #C9A9A6;
+    border: 2px solid #7d3c92;
     border-radius: 27px;
     padding: 12px 35px;
     color: #fff;
     font-weight: 500;
-	background:#C9A9A6;
+	background:#7d3c92;
 	text-transform:capitalize;
 	opacity:1;
 	box-shadow:none!important;
 }
 .btn-primary:hover{
-	color:#C9A9A6;
-	border-color:#C9A9A6;
+	color:#7d3c92;
+	border-color:#7d3c92;
 	background:none;
 }
 .btn.btn-default:hover{
-	background:#C9A9A6;
+	background:#7d3c92;
 	color:#fff;
-	border-color:#C9A9A6;
+	border-color:#7d3c92;
 }
 .btn.focus, .btn:focus {
     outline: 0;
@@ -251,7 +241,7 @@ section{
 	position:relative;
 }
 .section-spacing{
-	padding:30px 0;
+	padding:110px 0;
 }
 .no-spacing{
 	padding:0;
@@ -263,7 +253,7 @@ section{
     width: 100%;
     float: left;
     height: auto;
-    margin: 0 0 35px;
+    margin: 0 0 70px;
 }
 .section-title h2{
 	position:relative;
@@ -278,7 +268,7 @@ section{
     position: absolute;
     left: 50%;
     content: '';
-    background:  rgb(235, 204, 198);
+    background: #e1ecff;
     top: -15px;
     border-radius: 5px;
     transform: rotate(45deg);
@@ -287,9 +277,9 @@ section{
     width: 10px;
     height: 55px;
     position: absolute;
-    left: 51%;
+    left: 50%;
     content: '';
-    background:   rgb(235, 204, 198);
+    background: #e1ecff;
     bottom: -15px;
     border-radius: 5px;
     transform: rotate(45deg);
@@ -302,9 +292,7 @@ section{
 
 /*======================================== Header Design ========================================*/
 .navbar{
-	padding:10px 0;
-	border-bottom: 1px solid #C9A9A6;
-	opacity: 0.9;
+	padding:20px 0;
 }
 .navbar .navbar-brand{
 	padding:4px 0;
@@ -328,7 +316,7 @@ section{
 	left:50%;
 	top:0;
 	content:'';
-	background:#C9A9A6;
+	background:#e1ecff;
 	margin-left:-2px;
 	transform:rotate(45deg);
 	opacity:0;
@@ -345,7 +333,7 @@ section{
 	left:50%;
 	bottom:0;
 	content:'';
-	background:#C9A9A6;
+	background:#e1ecff;
 	margin-right:-2px;
 	transform:rotate(45deg);
 	opacity:0;
@@ -363,18 +351,18 @@ section{
 	visibility:visible;
 }
 .navbar .navbar-nav .nav-item.btn-appointment .nav-link{
-	background: #C9A9A6;
+	background: #7d3c92;
     color: #fff;
     padding: 11px 30px;
     border-radius: 25px;
     text-transform: uppercase;
-    border: 2px solid #C9A9A6;
+    border: 2px solid #7d3c92;
 }
 .navbar .navbar-nav .nav-item.btn-appointment.active .nav-link{
 	color:#fff;
 }
 .navbar .navbar-nav .nav-item.btn-appointment .nav-link:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 	background-color:transparent;
 }
 .navbar .navbar-nav .nav-item.btn-appointment{
@@ -388,7 +376,7 @@ section{
 }
 .navbar .navbar-nav .nav-item.active .nav-link,
 .navbar .navbar-nav .nav-link:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 } 
 .navbar-toggler{
 	padding:0;
@@ -448,7 +436,6 @@ section{
 
 /*======================================== Banner Design =============================*/
 #banner{
-	margin-top: 50px;
 	width:100%;
 	float:left;
 	height:auto;
@@ -509,14 +496,14 @@ section{
 	height:14px;
 	background:#fff;
 	border-radius:50%;
-	border:2px solid #C9A9A6;
+	border:2px solid #7d3c92;
 	margin:0 0 10px;
 }
 .carousel-indicators li:last-child{
 	margin:0;
 }
 .carousel-indicators li.active{
-	background:#C9A9A6;
+	background:#7d3c92;
 }
 
 /*======================================== Services =============================*/
@@ -608,7 +595,7 @@ section{
 	display:inline-block;
 }
 .play-button a:hover .fa{
-	background:#C9A9A6;
+	background:#7d3c92;
 	color:#fff;
 }
 .play-button a .fa{
@@ -620,7 +607,7 @@ section{
 	width:100px;
 	text-align:center;
 	font-size:24px;
-	color:#C9A9A6;
+	color:#7d3c92;
 	position:relative;
 	z-index:6;
 	-webkit-transition:all 0.3s ease-in-out;
@@ -725,7 +712,7 @@ iframe {
 .service-details ul li{
 	font-size:16px;
 	line-height: 28px;
-    color: #6d6d6d;
+    color: #929292;
 	padding-left:28px;
 	position:relative;
 	margin:0 0 5px;
@@ -743,7 +730,7 @@ iframe {
 	top:0;
 	content:"\f18e";
 	font-family:FontAwesome;
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 
 /*======================================== Pricing Plan =============================*/
@@ -824,12 +811,12 @@ iframe {
 .pricing-table ul li{
 	display:block;
 	font-size:16px;
-	color:#6d6d6d;
+	color:#929292;
 	padding:4px 0;
 	line-height:24px;
 }
 .pricing-table h2{
-	color:#C9A9A6;
+	color:#7d3c92;
 	font-weight:500;
 	margin:0 0 27px;
 }
@@ -859,7 +846,7 @@ iframe {
 	top:0;
 	left:0;
 	content:'';
-	background:#C9A9A6;
+	background:#7d3c92;
 	opacity:0;
 	visibility:hidden;
 	-webkit-transition:all 0.3s ease-in-out;
@@ -987,7 +974,7 @@ iframe {
     position: absolute;
     left: 0;
     content: '';
-    background: #C9A9A6;
+    background: #7d3c92;
     bottom: 0;
 }
 .breadcrumb{
@@ -995,14 +982,14 @@ iframe {
 	background:none;
 }
 .breadcrumb li a:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 .breadcrumb-item{
 	text-transform:capitalize;
 	font-size:14px;
 }
 .breadcrumb-item.active {
-    color: #6d6d6d;
+    color: #929292;
 }
 .team{
 	width:100%;
@@ -1038,7 +1025,7 @@ iframe {
     width: 100%;
     float: left;
     height: auto;
-	background:#C9A9A6;
+	background:#7d3c92;
 	padding:25px 10px 25px;
 	border-radius:0 0 5px 5px;
 	position:absolute;
@@ -1120,7 +1107,7 @@ iframe {
     font-size: 35px;
 }
 .features-info:hover{
-	background:#C9A9A6;
+	background:#7d3c92;
 }
 .features-info:hover h3,
 .features-info:hover span.counter{
@@ -1173,7 +1160,7 @@ iframe {
 	width:100%;
 	float:left;
 	height:auto;
-	border:1px solid #C9A9A6;
+	border:1px solid #7d3c92;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
 	border-radius:5px;
@@ -1200,7 +1187,7 @@ iframe {
 .author-comment::after {
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid #C9A9A6;
+    border-top: 10px solid #7d3c92;
     position: absolute;
     left: 19px;
     content: '';
@@ -1209,7 +1196,7 @@ iframe {
 }
 .quote .fa{
 	font-size:40px;
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 .owl-dots{
 	width:100%;
@@ -1221,7 +1208,7 @@ iframe {
 	display:inline-block;
 	width:12px;
 	height:12px;
-	border:1px solid #C9A9A6;
+	border:1px solid #7d3c92;
 	outline:none;
 	-webkit-border-radius:6px;
 	-moz-border-radius:6px;
@@ -1229,7 +1216,7 @@ iframe {
 	margin:0 5px;
 }
 .owl-carousel .owl-dots .owl-dot.active{
-	background:#C9A9A6;
+	background:#7d3c92;
 	width:25px;
 }
 
@@ -1270,7 +1257,7 @@ a.btn.btn-link {
 	text-decoration:none;
 }
 a.btn.btn-link:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 a.btn.btn-link .fa{
 	-webkit-transition:all 0.3s ease-in-out;
@@ -1289,7 +1276,7 @@ a.btn.btn-link:hover .fa{
 	display:block;
 }
 .news-block h3 a:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 .overlay{
 	width:100%;
@@ -1332,7 +1319,7 @@ a.btn.btn-link:hover .fa{
 }
 .overlay a:hover{
 	background:#fff;
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 .news-bottom{
 	width:100%;
@@ -1350,7 +1337,7 @@ a.btn.btn-link:hover .fa{
 	color:#333;
 }
 .post-meta li a:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 .pagination-container {
     width: 100%;
@@ -1385,17 +1372,17 @@ a.btn.btn-link:hover .fa{
 .pagination > li > a:hover, 
 .pagination > li >span:focus, 
 .pagination > li > span:hover{
-	background-color: #C9A9A6;
-    border-color: #C9A9A6;
+	background-color: #7d3c92;
+    border-color: #7d3c92;
 	color:#fff;
 }
 blockquote {
 	font-size: 16px;
     line-height: 28px;
-    color: #6d6d6d;
+    color: #929292;
     padding: 20px 20px;
     margin: 0 0 25px;
-    border-left: 5px solid #C9A9A6;
+    border-left: 5px solid #7d3c92;
     background: #f8faff;
 }
 .news-details{
@@ -1481,7 +1468,7 @@ blockquote {
 	margin:0 0 15px;
 }
 .author-desc a:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 .sidebar{
 	width:100%;
@@ -1506,7 +1493,7 @@ blockquote {
 	left:0;
 	bottom:0;
 	height:2px;
-	background:#C9A9A6;
+	background:#7d3c92;
 	content:'';
 }
 .search-submit {
@@ -1516,7 +1503,7 @@ blockquote {
     height: 38px;
     padding: 0 8px;
     text-transform: uppercase;
-	background:#C9A9A6;
+	background:#7d3c92;
 }
 .category-list,
 .archive-list{
@@ -1546,7 +1533,7 @@ blockquote {
 }
 .category-list li a:hover,
 .archive-list li a:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 .tag-list li{
 	width:auto;
@@ -1567,8 +1554,8 @@ blockquote {
 }
 .tag-list li a:hover{
 	color:#fff;
-	border-color:#C9A9A6;
-	background:#C9A9A6;
+	border-color:#7d3c92;
+	background:#7d3c92;
 }
 .comment-form .form-control::-moz-placeholder,
 .comment-form .form-control{
@@ -1580,7 +1567,7 @@ blockquote {
 	font-size:16px;
 	text-align:center;
 	border:none;
-	background:#C9A9A6;
+	background:#7d3c92;
 	color:#fff;
 	cursor:pointer;
 	border-radius:0 3px 3px 0;
@@ -1591,7 +1578,7 @@ blockquote {
     color: #333;
 }
 .list-inline-item .fa{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 .sidebar-widget{
 	padding:20px;
@@ -1621,11 +1608,11 @@ blockquote {
 	transition:all 0.3s ease-in-out;
 }
 .contact-info:hover{
-	border-color:#C9A9A6;
+	border-color:#7d3c92;
 }
 .contact-info .fa{
 	font-size:30px;
-	color:#C9A9A6;
+	color:#7d3c92;
 	margin:0 0 20px;
 }
 .contact-info p{
@@ -1636,7 +1623,7 @@ blockquote {
 	color:inherit;
 }
 .contact-info p a:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 .form-control{
 	height:54px;
@@ -1648,7 +1635,7 @@ blockquote {
 	border-radius:3px;
 }
 .form-control:focus{
-	border-color:#C9A9A6;
+	border-color:#7d3c92;
 }
 .form-control::-moz-placeholder{
 	color:#999;
@@ -1706,7 +1693,7 @@ blockquote {
 	color:#999;
 }
 .footer-top ul li a:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 .footer-widget .fa{
 	width:20px;
@@ -1737,7 +1724,7 @@ blockquote {
 .back-top a{
 	width: 40px;
 	line-height: 40px;
-	background: #C9A9A6;
+	background: #7d3c92;
 	color: #fff;
 	display: inline-block;
 	border-radius: 5px;
@@ -1778,7 +1765,7 @@ blockquote {
 	z-index:99;
 }
 .close:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 }
 #reservation-form{
 	width:100%;
@@ -1808,7 +1795,7 @@ blockquote {
 }
 .chosen-container-active.chosen-with-drop .chosen-single{
 	box-shadown:none;
-	border-color:#C9A9A6;
+	border-color:#7d3c92;
 }
 .chosen-container .chosen-results{
 	margin:0;
@@ -1817,7 +1804,7 @@ blockquote {
 }
 .chosen-container .chosen-drop{
 	box-shadown:none;
-	border-color:#C9A9A6;
+	border-color:#7d3c92;
 }
 .chosen-container .chosen-results li{
 	padding:10px 15px;
@@ -1827,7 +1814,7 @@ blockquote {
 	cursor:pointer;
 }
 .chosen-container .chosen-results li.active-result.highlighted{
-	color:#C9A9A6;
+	color:#7d3c92;
 	background:#f5f5f5;
 }
 .chosen-container-single .chosen-single div {
@@ -1873,7 +1860,7 @@ blockquote {
     color: #f00;
 }
 .modal .form-control:focus{
-	border-color:#C9A9A6;
+	border-color:#7d3c92;
 }
 .bootstrap-timepicker-widget.dropdown-menu{
 	left:38px;
@@ -1891,9 +1878,9 @@ input[type="submit"].btn.btn-primary{
 	border:2px solid transparent;
 }
 input[type="submit"].btn.btn-primary:hover{
-	color:#C9A9A6;
+	color:#7d3c92;
 	background:none;
-	border-color:#C9A9A6;
+	border-color:#7d3c92;
 }
 
 /*======================================== Responsive Design =============================*/

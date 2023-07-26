@@ -1,0 +1,341 @@
+/*
+Author       	: theme_crazy
+Template Name	: Amella - Spa and Beauty Salon Template
+Version      	: 1.0
+*/
+
+/****** Table Of Content ***************
+=================================================
+#1. Typography
+#2. Pre Loader
+#3. Navigation
+#4. Section
+#5. Responsive Design
+=================================================
+*/
+
+/************* Typography ******************/
+*{
+	padding:0;
+	margin:0;
+}
+img{
+	border:none;
+	outline:none;
+	max-width:100%;
+}
+a,a:active,a:focus,a:hover{
+	outline:none;
+	text-decoration:none;
+}
+a{
+	-webkit-transition:all 0.35s ease-in-out;
+	-moz-transition:all 0.35s ease-in-out;
+	-ms-transition:all 0.35s ease-in-out;
+	-o-transition:all 0.35s ease-in-out;
+	transition:all 0.35s ease-in-out;
+	color:#333;
+}
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+	outline:none!important;
+	box-shadow:none;
+}
+ul{
+	margin:0;
+	list-style-type:none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	font-family: 'Poppins', sans-serif;
+}
+h1{
+	font-size:25px;
+	color:#333;
+	font-weight:700;
+	line-height:normal;
+	margin:0 0 25px;
+	text-transform:uppercase;
+}
+h2{
+	font-size:20px;
+	color:#333;
+	font-weight:600;
+	line-height:normal;
+	margin:0 0 8px;
+}
+h3{
+	font-size:18px;
+	color:#333;
+	font-weight:500;
+	line-height:normal;
+	margin:0 0 15px;
+	position:relative;
+}
+h4{
+	font-size:18px;
+	color:#333;
+	font-weight:600;
+	line-height:normal;
+	position:relative;
+	text-transform:capitalize;
+	margin:20px 0 5px;
+}
+p, 
+pre, 
+ul, 
+ol, 
+dl, 
+dd, 
+blockquote, 
+address, 
+table, 
+fieldset, 
+form, 
+ul ul, 
+ol ul, 
+ul ol, 
+ol ol{
+    line-height: 24px;
+    font-size: 16px;
+}
+p{
+	margin:0 0 30px;
+}
+ol,
+ul {
+    margin: 0 0 0 30px;
+}
+ol li,
+ul li{
+	font-size:16px;
+	line-height:28px;
+}
+ul{
+	list-style-type:circle;
+}
+p a{
+	color:#7d3c92;
+}
+body{
+	font-family: 'Poppins', sans-serif;
+	padding-top:68px;
+	position:relative;
+	font-size:16px;
+}
+
+/*================================ Pre Loader ====================================*/
+.preloader{
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:13000;
+	height:100%;
+	background:#fff;
+}
+.preloader_image{
+	width:130px;
+	height:130px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+}
+.sk-double-bounce {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	margin: 40px auto;
+}
+.sk-double-bounce .sk-child {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background:#7d3c92;
+	opacity: 0.6;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-animation: sk-doubleBounce 2s infinite ease-in-out;
+	animation: sk-doubleBounce 2s infinite ease-in-out; 
+}
+.sk-double-bounce .sk-double-bounce2 {
+	-webkit-animation-delay: -1.0s;
+	animation-delay: -1.0s; 
+}
+
+@-webkit-keyframes sk-doubleBounce {
+	0%, 100% {
+		-webkit-transform: scale(0);
+		transform: scale(0); 
+	}
+	50% {
+		-webkit-transform: scale(1);
+		transform: scale(1); 
+	} 
+}
+
+@keyframes sk-doubleBounce {
+	0%, 100% {
+		-webkit-transform: scale(0);
+		transform: scale(0); 
+	}
+	50% {
+		-webkit-transform: scale(1);
+		transform: scale(1); 
+	} 
+}
+
+/*================================ Navigation =========================*/
+.navbar{
+	box-shadow:0 0 5px rgba(0,91,234,0.3);
+}
+.navbar-expand-lg .navbar-nav .nav-link{
+	color:#333;
+}
+.navbar .navbar-nav .nav-item .nav-link.active,
+.navbar .navbar-nav .nav-link:hover{
+	color:#7d3c92;
+} 
+.navbar-toggler{
+	padding:0;
+	outline:none;
+	border:none;
+}
+.navbar-toggler-icon{
+	display: inline-block;
+    width: 40px;
+    height: 3px;
+    background: #000;
+    position: relative;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+}
+.navbar-toggler-icon:before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: -11px;
+    width: 100%;
+    height: 3px;
+    background: #000;
+    border-radius: 4px;
+    transition: all 0.35s ease-out;
+    -webkit-transition: all 0.35s ease-out;
+    backface-visibility: hidden;
+}
+.navbar-toggler-icon:after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: -11px;
+    width: 100%;
+    height: 3px;
+    background: #000;
+    border-radius: 4px;
+    transition: all 0.35s ease-out;
+    -webkit-transition: all 0.35s ease-out;
+    backface-visibility: hidden;
+}
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon{
+    background: rgba(0, 0, 0, 0);
+}
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon:before {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    top: 0px;
+}
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon:after {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    bottom: 0px;
+}
+
+/*================================ Section ============================*/
+section{
+	width:100%;
+	float:left;
+	height:auto;
+	padding:70px 0;
+}
+.section-title{
+	width:100%;
+	float:left;
+	height:auto;
+}
+.section-title h1{
+	position:relative;
+}
+.screenshot{
+	display:block;
+	margin:0 0 40px;
+}
+.screenshot.last{
+	margin:0;
+}
+.dark-bg {
+    background: #f6f6f6;
+}
+.thank-you {
+    width: 100%;
+    float: left;
+    margin: 40px 0 0;
+}
+.thank-you p{
+	margin:0;
+}
+#form-change img{
+	margin:0 0 30px;
+}
+#form-change img:last-child{
+	margin:0;
+}
+/*===================== Back to top =====================*/
+.back-top i {
+    background:#7d3c92;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 24px;
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+}
+.back-top {
+    width: auto;
+    float: right;
+    height: auto;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 999;
+}
+.back-top a {
+    display: inline-block;
+    text-align: center;
+}
+
+footer{
+	width:100%;
+	float:left;
+	height:auto;
+	padding:30px 0;
+	background:#333;
+}
+footer p{
+	margin:0;
+	color:#fff;
+	font-size:14px;
+}
