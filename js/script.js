@@ -8,7 +8,24 @@ Version      : 1.0
 {
 	"use strict";
 	
-	$('.nav-link').click(function() {
+	
+
+	if (!Cookies.get('popup')) {
+		setTimeout(function() {
+			$('#siteModal').modal();
+		}, 600);
+		Cookies.get('popup', true);
+	} else{
+		// $('#siteModal').modal();
+	}
+
+	$('#siteModal').on('shown.bs.modal', function () {
+		// bootstrap modal callback function
+		// set cookie
+		Cookies.set('popup', 'valid', { expires: 1, path: "/" }); // need to set the path to fix a FF bug
+	})		
+
+	$('.nav-link, .footer-link').click(function() {
 		// alert('here');
 
 		setTimeout(function() {
@@ -182,9 +199,7 @@ Version      : 1.0
 	
 	jQuery('.tilt-img').tilt({
 		maxTilt:7					
-	});
-	
+	});  
 
-	
 })(jQuery);	
 	

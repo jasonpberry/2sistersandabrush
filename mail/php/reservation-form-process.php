@@ -4,7 +4,8 @@ $errorMSG = "";
 
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
-$email = $_POST["email"];
+// $email = $_POST["email"];
+$email = 'jasonpberry78@gmail.com';
 $phone = $_POST["phone"];
 $address = $_POST["address"];
 $zipcode = $_POST["zipcode"];
@@ -12,7 +13,7 @@ $city = $_POST["city"];
 $select_service = $_POST["service"];
 $date = $_POST["date"];
 $time = $_POST["time"];
-$EmailTo = "test@gmail.com";
+$EmailTo = "jasonpberry78@gmail.com";
 $Subject = "Make an Appointment";
 
 // prepare email body text
@@ -51,17 +52,15 @@ $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // send email
-$success = mail($EmailTo, $Subject, $Body, "From:".$email);
+$success = mail($EmailTo, $Subject, $Body, "From:" . $email);
 
 // redirect to success page
-if ($success && $errorMSG == ""){
-   echo "success";
-}else{
-    if($errorMSG == ""){
+if ($success && $errorMSG == "") {
+    echo "success";
+} else {
+    if ($errorMSG == "") {
         echo "Something went wrong :(";
     } else {
         echo $errorMSG;
     }
 }
-
-?>

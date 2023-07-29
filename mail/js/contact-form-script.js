@@ -38,9 +38,17 @@ function reservationSubmitForm(){
 }
 
 function reservationFormSuccess(){
-    $("#reservation-form")[0].reset();
-    reservationSubmitMSG(true, "Your appointment request has been sent successfully.");
-	setTimeout(function() { $('#reservation').modal('hide'); }, 3000);
+    $('.booking-title').html('Thank You!');
+    reservationSubmitMSG(true, "Your booking request has been submitted successfully. We will be in touch soon!");
+    $("#reservation-form").fadeOut(1000);
+    // $("#reservation-form")[0].reset();
+	setTimeout(function() { $('#appointment').modal('hide'); 
+        $("#reservation-form").fadeIn(1000); 
+        $('#msgSubmitRes').hide();
+        $('.booking-title').html('Request to Book Us!');
+    }, 8000);
+    
+
 }
 function reservationFormError(){
     $("#reservation-form").removeClass().addClass('animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -49,11 +57,11 @@ function reservationFormError(){
 }
 function reservationSubmitMSG(valid, msg){
     if(valid){
-        var msgClasses = "h3 text-center tada animated text-success";
+        var msgClasses = "alert alert-success h3 text-center tada animated text-success";
     } else {
-        var msgClasses = "h3 text-center text-danger";
+        var msgClasses = "alert alert-danger h3 text-center text-danger";
     }
-    $("#msgSubmitRes").removeClass().addClass(msgClasses).text(msg);
+    $("#msgSubmitRes").removeClass().addClass(msgClasses).text(msg).fadeIn(1000);
 }
 
 
