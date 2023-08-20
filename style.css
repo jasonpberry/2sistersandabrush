@@ -278,18 +278,20 @@ section{
     position: absolute;
     left: 50%;
     content: '';
-    background:  rgb(235, 204, 198);
+    background:  #6F8FAF;
     top: -15px;
+	opacity: 0.5;
     border-radius: 5px;
     transform: rotate(45deg);
 }
 .section-title h2::after {
+	opacity: 0.5;
     width: 10px;
     height: 55px;
     position: absolute;
     left: 51%;
     content: '';
-    background:   rgb(235, 204, 198);
+    background:   #6F8FAF;
     bottom: -15px;
     border-radius: 5px;
     transform: rotate(45deg);
