@@ -545,7 +545,7 @@ section{
 	height:auto;
 }
 .service-item .thumb img{
-	width:100%;
+	width:80%;
 	height:auto;
 	-webkit-transition:all 0.5s ease-in-out;
 	-ms-transition:all 0.5s ease-in-out;
@@ -1764,7 +1764,7 @@ blockquote {
 	padding:20px;
 }
 .modal .form-group{
-	margin:0 0 20px;
+	margin:0 0 10px;
 }
 .close {
     float: right;
@@ -1853,7 +1853,7 @@ blockquote {
 	transition: all 0s ease-in-out;
 }
 .modal .input-group-addon {
-    padding: 13px 12px;
+    padding: 11px 12px;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1;
@@ -1866,7 +1866,7 @@ blockquote {
 }
 .modal .form-control{
 	padding:6px 15px;
-	height:45px;
+	height:40px;
 	border: 1px solid #ccc;
 	box-shadow:none;
 	border-radius:0;
