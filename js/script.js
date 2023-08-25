@@ -28,6 +28,8 @@ Version      : 1.0
 	$('.nav-link, .footer-link').click(function() {
 		// alert('here');
 
+		$('.navbar-collapse').collapse('hide');
+		
 		setTimeout(function() {
 			var y = $(window).scrollTop();  //your current y position on the page
 			$(window).scrollTop(y-50);	
