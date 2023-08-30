@@ -3,6 +3,7 @@ $("#reservation-form").validator().on("submit", function (event) {
     if (event.isDefaultPrevented()) {
 		formError();
     } else {
+        $("#booking-submit").attr('disabled', true).val("Sending...");
         event.preventDefault();
         reservationSubmitForm();
     }
@@ -46,6 +47,7 @@ function reservationFormSuccess(){
         $("#reservation-form").fadeIn(1000); 
         $('#msgSubmitRes').hide();
         $('.booking-title').html('Request to Book Us!');
+        $("#booking-submit").attr('disabled', false)
     }, 8000);
     
 

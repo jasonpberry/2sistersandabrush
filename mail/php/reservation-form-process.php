@@ -5,7 +5,7 @@ $errorMSG = "";
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
 // $email = $_POST["email"];
-$email = 'jasonpberry78@gmail.com';
+$email = 'noreply@2sistersandabrush.beauty';
 $phone = $_POST["phone"];
 $address = $_POST["address"];
 $zipcode = $_POST["zipcode"];
@@ -14,7 +14,7 @@ $select_service = $_POST["service"];
 $date = $_POST["date"];
 $time = $_POST["time"];
 $EmailTo = "jasonpberry78@gmail.com";
-$Subject = "Make an Appointment";
+$Subject = "v23 Request for Bridal Services";
 
 // prepare email body text
 $Body = "";
@@ -49,10 +49,14 @@ $Body .= "Reservation Time: ";
 $Body .= $time;
 $Body .= "\n";
 $headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+$headers .= "From: (2 Sisters & A Brush) noreply@2sistersandabrush.beauty" . "\r\n";
+// $headers .= "Reply-To: noreply@2sistersandabrush.beauty" . "\r\n";
+// $headers .= "Return-Path: noreply@2sistersandabrush.beauty" . "\r\n";
+$headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
 
 // send email
 $success = mail($EmailTo, $Subject, $Body, "From:" . $email);
+// $success = mail($EmailTo, $Subject, $Body, $headers, "-f noreply@2sistersandabrush.beauty");
 
 // redirect to success page
 if ($success && $errorMSG == "") {
