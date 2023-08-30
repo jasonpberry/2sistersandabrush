@@ -55,8 +55,8 @@ $headers .= "From: (2 Sisters & A Brush) noreply@2sistersandabrush.beauty" . "\r
 $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
 
 // send email
-$success = mail($EmailTo, $Subject, $Body, "From:" . $email);
-// $success = mail($EmailTo, $Subject, $Body, $headers, "-f noreply@2sistersandabrush.beauty");
+// $success = mail($EmailTo, $Subject, $Body, "From:" . $email);
+$success = mail($EmailTo, $Subject, $Body, $headers, "-f noreply@2sistersandabrush.beauty");
 
 // redirect to success page
 if ($success && $errorMSG == "") {
