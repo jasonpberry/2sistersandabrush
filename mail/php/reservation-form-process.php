@@ -49,9 +49,9 @@ $Body .= "Reservation Time: ";
 $Body .= $time;
 $Body .= "\n";
 $headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "From: (2 Sisters & A Brush) $email" . "\r\n";
-$headers .= "Reply-To: $email" . "\r\n";
-$headers .= "Return-Path: $email" . "\r\n";
+$headers .= "From: (2 Sisters & A Brush) " . $email . "\r\n";
+$headers .= "Reply-To: " . $email . "\r\n";
+$headers .= "Return-Path: " . $email . "\r\n";
 $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
 
 // send email
@@ -60,7 +60,7 @@ $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
 // $success = mail($EmailTo, $Subject, $Body, $headers);
 
 // prod / godaddy
-$success = mail($EmailTo, $Subject, $Body, $headers, "-f $email");
+$success = mail($EmailTo, $Subject, $Body, $headers, "-f " . $email);
 
 // redirect to success page
 if ($success && $errorMSG == "") {
