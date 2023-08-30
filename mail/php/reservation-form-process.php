@@ -60,7 +60,7 @@ $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
 // $success = mail($EmailTo, $Subject, $Body, $headers);
 
 // prod / godaddy
-$success = mail($EmailTo, $Subject, $Body, $headers, "-f jasonpberry78@gmail.com");
+$success = mail($EmailTo, $Subject, $Body, $headers, "-f $email");
 
 // redirect to success page
 if ($success && $errorMSG == "") {
