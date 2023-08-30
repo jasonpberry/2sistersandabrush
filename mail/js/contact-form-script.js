@@ -48,7 +48,7 @@ function reservationFormSuccess(){
         $('#msgSubmitRes').hide();
         $('.booking-title').html('Request to Book Us!');
         $("#booking-submit").attr('disabled', false);
-        $("#booking-submit").attr('disabled', true).val("Submit");
+        $("#booking-submit").val("Submit");
 
     }, 8000);
     
