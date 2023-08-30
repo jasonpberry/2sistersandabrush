@@ -14,7 +14,7 @@ $select_service = $_POST["service"];
 $date = $_POST["date"];
 $time = $_POST["time"];
 $EmailTo = "jasonpberry78@gmail.com";
-$Subject = "v23 Request for Bridal Services";
+$Subject = "v31 Request for Bridal Services";
 
 // prepare email body text
 $Body = "";
@@ -49,14 +49,18 @@ $Body .= "Reservation Time: ";
 $Body .= $time;
 $Body .= "\n";
 $headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "From: (2 Sisters & A Brush) noreply@2sistersandabrush.beauty" . "\r\n";
-// $headers .= "Reply-To: noreply@2sistersandabrush.beauty" . "\r\n";
-// $headers .= "Return-Path: noreply@2sistersandabrush.beauty" . "\r\n";
+$headers .= "From: (2 Sisters & A Brush) $email" . "\r\n";
+$headers .= "Reply-To: $email" . "\r\n";
+$headers .= "Return-Path: $email" . "\r\n";
 $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
 
 // send email
-// $success = mail($EmailTo, $Subject, $Body, "From:" . $email);
-$success = mail($EmailTo, $Subject, $Body, $headers, "-f noreply@2sistersandabrush.beauty");
+
+// local
+// $success = mail($EmailTo, $Subject, $Body, $headers);
+
+// prod / godaddy
+$success = mail($EmailTo, $Subject, $Body, $headers, "-f jasonpberry78@gmail.com");
 
 // redirect to success page
 if ($success && $errorMSG == "") {
