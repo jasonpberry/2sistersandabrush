@@ -843,6 +843,7 @@ iframe {
 
 /*======================================== Gallery =============================*/
 .gallery-item{
+	max-height: 235px;
 	width:100%;
 	float:left;
 	height:auto;
@@ -2117,4 +2118,6 @@ ul.navbar-nav.ml-auto{
 }
 }
 
-
+img.figlio {
+  width: 85%;
+}
