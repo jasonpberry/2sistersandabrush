@@ -817,10 +817,14 @@
 
 					<form id="reservation-form" method="post" data-toggle="validator">
 
+						
+						<div class="alert alert-dark">
+							<ul>
+								<li><span class="fa fa-check"></span> Bridal Parties 4+ Required</li>
+								<li><span class="fa fa-check"></span> Travel Fee of $100 for each service</li>
+							</ul>
 
-						<p class="alert alert-dark">
-							Text about venue .... ? 
-						</p>
+						</div>
 
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
@@ -919,12 +923,26 @@
 							</div>
 						</div>
 						
+						<p>&nbsp;</p>
+						<p class="alert alert-dark">
+							Choose the services you're looking for below. Trials are suggested. etc. 
+						</p>
+
 						<div class="form-group">
-							<label>Service</label>
-							<select id="rselect-service" class="select-option" name="service">
-								<option value="Hair & Makeup">Hair & Makeup (Lauren & Kelly)</option>
-								<option value="Just Hair (Lauren)">Just Hair (Lauren)</option>
-								<option value="Just Makeup (Kelly)">Just Makeup (Kelly)</option>
+							<label>Hair Service (Lauren)</label>
+							<select id="rselect-service" class="select-option" name="service" required>
+								<option value="">No Hair</option>
+								<option value="Hair + Trial" selected>Hair + Trial (Suggested)</option>
+								<option value="Hair Only, No Trial">Hair Only, No Trial</option>
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label>Makeup Service (Kelly)</label>
+							<select id="rselect-service" class="select-option" name="service2" required>
+								<option value="">No Makeup</option>
+								<option value="Makeup + Trial" selected>Makeup + Trial (Suggested)</option>
+								<option value="Makeup Only, No Trial">Makeup Only, No Trial</option>
 							</select>
 						</div>
 						
