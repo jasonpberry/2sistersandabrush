@@ -291,11 +291,11 @@
 								<li><em>False eyelashes included</em></li>
 								<li>&nbsp;</li>
 							</ul>
-							<h2><sub>$</sub>115.00</h2>
+							<h2><sub>$</sub>120.00</h2>
 
 							<h3>Bridesmaids</h3>
 							<ul></ul>
-							<h2><sub>$</sub>95.00</h2>
+							<h2><sub>$</sub>100.00</h2>
 
 						</div>
 					</div>
@@ -370,7 +370,6 @@
 						<a href="/img/gallery/2-gallery-large.jpg" class="venobox" data-gall="gallery">
 							<img src="/img/gallery/2-gallery-large.jpg" alt="">
 							<div class="gallery-caption text-center">
-								<i class="fa fa-heart-o"></i>
 								<h3>Enlage</h3>
 							</div>
 						</a>
@@ -908,47 +907,35 @@
 						</div>
 						
 						<div class="form-group">
-							<label>Address</label>
+							<label>Venue Address</label>
 							<input type="text" id="raddress" class="form-control" name="address">
 						</div>
 						
 						<div class="row">
 							<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label>Zip Code</label>
+									<label>Venue Zip Code</label>
 									<input type="text" id="rzipcode" class="form-control" name="zipcode">
 								</div>
 							</div>
 							
 							<div class="col-xs-12 col-sm-8">
 								<div class="form-group">
-									<label>City</label>
+									<label>Venue City</label>
 									<input type="text" id="rcity" class="form-control" name="city">
 								</div>
 							</div>
 						</div>
 						
-						<div class="form-group">
-							<label>Service</label>
-							<select id="rselect-service" class="select-option" name="service">
-								<option value="Herbal Spa">Herbal Spa</option>
-								<option value="Skin Care">Skin Care</option>
-								<option value="Stone Message">Stone Message</option>
-								<option value="Body Message">Body Message</option>
-								<option value="Aromatherapy">Aromatherapy</option>
-								<option value="Hydrotherapy">Hydrotherapy</option>
-							</select>
-						</div>
-						
 						<div class="row">
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
-									<label>Reservation Date*</label>
+									<label>Event Date*</label>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-calendar"></i>
 										</div>
-										<input type="text" id="rdate" class="form-control date-pic" name="date" placeholder="mm/dd/yyyy" required data-error="Please select reservation date">
+										<input type="text" id="rdate" class="form-control date-pic" name="date" placeholder="mm/dd/yyyy" required data-error="Please select event date">
 									</div><!-- /.input group -->
 									<div class="help-block with-errors"></div>
 								</div>
@@ -957,12 +944,12 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="bootstrap-timepicker">
 									<div class="form-group">
-										<label>Time picker*</label>
+										<label>Event Time *</label>
 										<div class="input-group">
 											<div class="input-group-addon">
 												<i class="fa fa-clock-o"></i>
 											</div>
-											<input type="text" id="rtime" name="time" class="form-control timepicker" required data-error="Please select reservation time">
+											<input type="time" id="rtime" name="time" class="form-control " required data-error="Please select event time">
 										</div><!-- /.input group -->
 										<div class="help-block with-errors"></div>
 									</div><!-- /.form group -->
@@ -970,6 +957,22 @@
 							</div>
 						</div>
 						
+						<div class="form-group">
+							<label>Service</label>
+							<select id="rselect-service" class="select-option" name="service">
+								<option value="Hair & Makeup">Hair & Makeup (Lauren & Kelly)</option>
+								<option value="Just Hair (Lauren)">Just Hair (Lauren)</option>
+								<option value="Just Makeup (Kelly)">Just Makeup (Kelly)</option>
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label>Message For Us?</label>
+							<textarea name="message" id="message" placeholder="Pleae enter additional details here..." style="width: 100%; height: 75px; padding: 5px;"></textarea>
+
+						</div>
+						
+
 						<div class="submit-block text-right">
 							<a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
 							<input id="booking-submit" value="Submit" name="submit" class="btn btn-primary" type="submit" >
