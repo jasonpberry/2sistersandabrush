@@ -1756,7 +1756,7 @@ blockquote {
 
 /*======================================== Appointment Modal =============================*/
 .modal-header{
-	padding:20px;
+	padding:10px 20px;
 }
 .modal-header h2{
 	margin:0;
