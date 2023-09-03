@@ -4,7 +4,7 @@ $errorMSG = "";
 
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
-// $email = $_POST["email"];
+$emailFromForm = $_POST["email"];
 $email = 'noreply@2sistersandabrush.beauty';
 $phone = $_POST["phone"];
 $address = $_POST["address"];
@@ -25,7 +25,7 @@ $Body .= "Last Name: ";
 $Body .= $lname;
 $Body .= "\n";
 $Body .= "Email: ";
-$Body .= $email;
+$Body .= $emailFromForm;
 $Body .= "\n";
 $Body .= "Phone Number: ";
 $Body .= $phone;
