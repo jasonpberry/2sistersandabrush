@@ -16,7 +16,7 @@ $select_service = $_POST["service"];
 $date = $_POST["date"];
 $time = $_POST["time"];
 $message = $_POST["message"];
-$EmailTo = "jasonpberry78@gmail.com";
+$EmailTo = "jasonpberry78@gmail.com,4438072661@mms.att.net";
 $Subject = $fname . " " . $lname . " -  Request for Bridal Services";
 
 // prepare email body text
