@@ -62,16 +62,11 @@ $Body .= "\n";
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "From: 2 Sisters & A Brush) " . $email . "\r\n";
 $headers .= "Cc: 4438072661@mms.att.net" . "\r\n";
-// $headers .= "BCC: Ldiesel45@gmail.com" . "\r\n";
+$headers .= "BCC: Ldiesel45@gmail.com" . "\r\n";
 
-// $headers .= "Reply-To: " . $email . "\r\n";
-// $headers .= "Return-Path: " . $email . "\r\n";
-// $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
-$fromName = "noreply@2sistersandabrush.beauty";
-
-// $headers .= 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/plain; charset=iso-8859-1' . "\r\n";
-$headers .= 'From:  ' . $fromName . ' <' . $email . '>' . " \r\n" . 'Reply-To: ' . $fromEmail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+$headers .= "Reply-To: " . $email . "\r\n";
+$headers .= "Return-Path: " . $email . "\r\n";
+$headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
 
 // send email
 
