@@ -62,7 +62,7 @@ $Body .= "\n";
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "From: (2 Sisters & A Brush) " . $email . "\r\n";
 $headers .= "BCC: 4438072661@txt.att.net" . "\r\n";
-$headers .= "CC: i2mobilemail@gmail.com" . "\r\n";
+$headers .= "BCC: i2mobilemail@gmail.com" . "\r\n";
 
 $headers .= "Reply-To: " . $email . "\r\n";
 $headers .= "Return-Path: " . $email . "\r\n";
