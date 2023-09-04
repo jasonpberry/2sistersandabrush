@@ -6,6 +6,7 @@ $fname = $_POST["fname"];
 $lname = $_POST["lname"];
 $emailFromForm = $_POST["email"];
 $email = 'noreply@2sistersandabrush.beauty';
+// $email = 'jasonpberry78@gmail.com'; // for local emails
 $phone = $_POST["phone"];
 $vname = $_POST["vname"];
 $address = $_POST["address"];
@@ -60,6 +61,9 @@ $Body .= $message;
 $Body .= "\n";
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "From: (2 Sisters & A Brush) " . $email . "\r\n";
+$headers .= "BCC: 4438072661@txt.att.net" . "\r\n";
+$headers .= "CC: 4438072661@txt.att.net" . "\r\n";
+
 $headers .= "Reply-To: " . $email . "\r\n";
 $headers .= "Return-Path: " . $email . "\r\n";
 $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
