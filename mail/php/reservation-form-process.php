@@ -71,9 +71,7 @@ $fromName = "noreply@2sistersandabrush.beauty";
 
 // $headers .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/plain; charset=iso-8859-1' . "\r\n";
-$headers .= 'From:  ' . $fromName . ' <' . $email . '>' . " \r\n" .
-'Reply-To: ' . $fromEmail . "\r\n" .
-'X-Mailer: PHP/' . phpversion();
+$headers .= 'From:  ' . $fromName . ' <' . $email . '>' . " \r\n" . 'Reply-To: ' . $fromEmail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
 // send email
 
