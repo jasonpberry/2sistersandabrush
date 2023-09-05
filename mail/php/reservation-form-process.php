@@ -78,6 +78,7 @@ $success = mail($EmailTo, $Subject, $Body, $headers, "-f " . $email);
 
 // redirect to success page
 if ($success && $errorMSG == "") {
+    sendTextMessage('+14438072661', $Subject);
     echo "success";
 } else {
     if ($errorMSG == "") {
@@ -85,4 +86,31 @@ if ($success && $errorMSG == "") {
     } else {
         echo $errorMSG;
     }
+}
+
+function sendTextMessage($toNumber, $Subject)
+{
+    // Require the bundled autoload file - the path may need to change
+    // based on where you downloaded and unzipped the SDK
+    require __DIR__ . '/../../libs/src/Twilio/autoload.php';
+    require __DIR__ . '/../../libs/src/Twilio/.env.php';
+
+    $client = new Twilio\Rest\Client($sid, $token);
+
+    // Use the Client to make requests to the Twilio REST API
+    $message = $client->messages->create(
+        // The number you'd like to send the message to
+        $toNumber,
+        [
+            // A Twilio phone number you purchased at https://console.twilio.com
+            'from' => '+18339954202',
+            // The body of the text message you'd like to send
+            'body' => "New 2 Sisters & A Brush booking form has been emailed to you.\n\n" . $Subject,
+        ]
+    );
+
+    // echo "<pre>";
+    // print_r($message->sid);
+    // echo "</pre>";
+
 }
