@@ -205,7 +205,6 @@ Version      : 1.0
 
 
 	$('.rc-click-bookus').click(function() {
-		alert('clicked');
 		gtag('event', 'click', {
 			'app_name': '2SistersAndABrush',
 			'screen_name': 'Home'
