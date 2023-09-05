@@ -60,7 +60,7 @@ $Body .= "\n";
 $Body .= $message;
 $Body .= "\n";
 $headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "From: 2 Sisters & A Brush) " . $email . "\r\n";
+$headers .= "From: (2 Sisters & A Brush) " . $email . "\r\n";
 $headers .= "BCC: Ldiesel45@gmail.com" . "\r\n";
 $headers .= "CC: 2sistersandabrushbeauty@gmail.com" . "\r\n";
 
