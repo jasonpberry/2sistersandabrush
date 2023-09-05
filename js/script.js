@@ -206,7 +206,7 @@ Version      : 1.0
 
 	$('.rc-click-bookus').click(function() {
 		gtag('event', 'click', {
-			'app_name': '2SistersAndABrush',
+			'app_name': 'Book Us',
 			'screen_name': 'Home'
 		  });
 	});
