@@ -4,6 +4,8 @@ $errorMSG = "";
 
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
+
+$EmailTo = "2sistersandabrushbeauty@gmail.com";
 $emailFromForm = $_POST["email"];
 $email = 'noreply@2sistersandabrush.beauty';
 // $email = 'jasonpberry78@gmail.com'; // for local emails
@@ -16,7 +18,6 @@ $select_service = $_POST["service"];
 $date = $_POST["date"];
 $time = $_POST["time"];
 $message = $_POST["message"];
-$EmailTo = "jasonpberry78@gmail.com";
 $Subject = $fname . " " . $lname . " -  Request for Bridal Services";
 
 // prepare email body text
@@ -61,9 +62,8 @@ $Body .= $message;
 $Body .= "\n";
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "From: (2 Sisters & A Brush) " . $email . "\r\n";
+$headers .= "BCC: jasonpberry78@gmail.com" . "\r\n";
 $headers .= "BCC: Ldiesel45@gmail.com" . "\r\n";
-$headers .= "CC: 2sistersandabrushbeauty@gmail.com" . "\r\n";
-
 $headers .= "Reply-To: " . $email . "\r\n";
 $headers .= "Return-Path: " . $email . "\r\n";
 $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
