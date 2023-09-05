@@ -953,26 +953,55 @@
 							<span class="fa fa-check"></span> Choose the services you're looking for below. 
 						</p>
 
+						
+						<div class="form-group">
+							<label>Party Count</label>
+							<select id="rselect-service" class="select-option" name="party_count" required>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10+">10+</option>
+							</select>
+						</div>
+						
+
+
 						<div class="form-group">
 							<label>Hair Service (Lauren)</label>
 							<select id="rselect-service" class="select-option" name="service" required>
-								<option value="">No Hair</option>
-								<option value="Hair Trial Only">Hair Trial Only</option>
-								<option value="Hair + Trial" selected>Hair + Trial</option>
+								<option value="">No Hair Service</option>
+								<option value="Bridal Party Hair" selected>Bridal Party Hair</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>Bride Hair Trial with Lauren?</label>
+							<select id="rselect-service" class="select-option" name="service_hair_trial" required>
+								<option value="Yes">Yes</option>
+								<option value="No">No</option>
 							</select>
 						</div>
 						
 						<div class="form-group">
 							<label>Makeup Service (Kelly)</label>
 							<select id="rselect-service" class="select-option" name="service2" required>
-								<option value="">No Makeup</option>
-								<option value="Trial Only" selected>Makeup Trial Only</option>
-								<option value="Makeup + Trial" selected>Makeup + Trial</option>
+								<option value="">No Makeup Service</option>
+								<option value="Bridal Party Makeup" selected>Bridal Party Makeup</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label>Bride Hair Trial with Kelly?</label>
+							<select id="rselect-service" class="select-option" name="service_makeup_trial" required>
+								<option value="Yes">Yes</option>
+								<option value="No">No</option>
 							</select>
 						</div>
 						
 						<div class="form-group">
-							<label>Message For Us?</label>
+							<label>Message For Us (Anything we should know?)</label>
 							<textarea name="message" id="message" placeholder="Pleae enter additional details here..." style="width: 100%; height: 75px; padding: 5px; border: 1px solid #ccc;"></textarea>
 
 						</div>

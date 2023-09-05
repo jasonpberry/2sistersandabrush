@@ -8,13 +8,19 @@ $lname = $_POST["lname"];
 $EmailTo = "2sistersandabrushbeauty@gmail.com";
 $emailFromForm = $_POST["email"];
 $email = 'noreply@2sistersandabrush.beauty';
-// $email = 'jasonpberry78@gmail.com'; // for local emails
+$email = 'jasonpberry78@gmail.com'; // for local emails
 $phone = $_POST["phone"];
 $vname = $_POST["vname"];
 $address = $_POST["address"];
 $zipcode = $_POST["zipcode"];
 $city = $_POST["city"];
 $select_service = $_POST["service"];
+$select_service2 = $_POST["service2"];
+
+$party_count = $_POST['party_count'];
+$service_hair_trial = $_POST["service_hair_trial"];
+$service_makeup_trial = $_POST["service_makeup_trial"];
+
 $date = $_POST["date"];
 $time = $_POST["time"];
 $message = $_POST["message"];
@@ -33,28 +39,46 @@ $Body .= $emailFromForm;
 $Body .= "\n";
 $Body .= "Phone Number: ";
 $Body .= $phone;
-$Body .= "\n";
+$Body .= "\n\n";
 $Body .= "Venue Name: ";
 $Body .= $vname;
 $Body .= "\n";
 $Body .= "Address: ";
 $Body .= $address;
 $Body .= "\n";
-$Body .= "Zip Code: ";
-$Body .= $zipcode;
-$Body .= "\n";
 $Body .= "City: ";
 $Body .= $city;
 $Body .= "\n";
-$Body .= "Service: ";
+$Body .= "Zip Code: ";
+$Body .= $zipcode;
+$Body .= "\n\n";
+
+$Body .= "Party Size: ";
+$Body .= $party_count;
+$Body .= "\n\n";
+
+$Body .= "Hair Service: ";
 $Body .= $select_service;
 $Body .= "\n";
+
+$Body .= "Hair Trial: ";
+$Body .= $service_hair_trial;
+$Body .= "\n\n";
+
+$Body .= "Makeup Service: ";
+$Body .= $select_service2;
+$Body .= "\n";
+
+$Body .= "Makeup Trial: ";
+$Body .= $service_makeup_trial;
+$Body .= "\n\n";
+
 $Body .= "Reservation Date: ";
 $Body .= $date;
 $Body .= "\n";
 $Body .= "Reservation Time: ";
 $Body .= $time;
-$Body .= "\n";
+$Body .= "\n\n";
 $Body .= "Additional Info: ";
 $Body .= "\n";
 $Body .= "\n";
@@ -71,10 +95,10 @@ $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
 // send email
 
 // local
-// $success = mail($EmailTo, $Subject, $Body, $headers);
+$success = mail($EmailTo, $Subject, $Body, $headers);
 
 // prod / godaddy
-$success = mail($EmailTo, $Subject, $Body, $headers, "-f " . $email);
+// $success = mail($EmailTo, $Subject, $Body, $headers, "-f " . $email);
 
 // redirect to success page
 if ($success && $errorMSG == "") {
