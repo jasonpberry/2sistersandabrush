@@ -29,7 +29,7 @@ Version      : 1.0
 		// alert('here');
 
 		$('.navbar-collapse').collapse('hide');
-		
+
 		setTimeout(function() {
 			var y = $(window).scrollTop();  //your current y position on the page
 			$(window).scrollTop(y-50);	
@@ -202,6 +202,15 @@ Version      : 1.0
 	jQuery('.tilt-img').tilt({
 		maxTilt:7					
 	});  
+
+
+	$('.rc-click-bookus').click(function() {
+		alert('clicked');
+		gtag('event', 'click', {
+			'app_name': '2SistersAndABrush',
+			'screen_name': 'Home'
+		  });
+	});
 
 })(jQuery);	
 	
