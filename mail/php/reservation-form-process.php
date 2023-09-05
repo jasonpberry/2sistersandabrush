@@ -7,8 +7,10 @@ $lname = $_POST["lname"];
 
 $EmailTo = "2sistersandabrushbeauty@gmail.com";
 $emailFromForm = $_POST["email"];
+
 $email = 'noreply@2sistersandabrush.beauty';
-$email = 'jasonpberry78@gmail.com'; // for local emails
+// $email = 'jasonpberry78@gmail.com'; // for local emails
+
 $phone = $_POST["phone"];
 $vname = $_POST["vname"];
 $address = $_POST["address"];
@@ -95,10 +97,10 @@ $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";
 // send email
 
 // local
-$success = mail($EmailTo, $Subject, $Body, $headers);
+// $success = mail($EmailTo, $Subject, $Body, $headers);
 
 // prod / godaddy
-// $success = mail($EmailTo, $Subject, $Body, $headers, "-f " . $email);
+$success = mail($EmailTo, $Subject, $Body, $headers, "-f " . $email);
 
 // redirect to success page
 if ($success && $errorMSG == "") {
