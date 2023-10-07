@@ -12,7 +12,7 @@ $email = 'noreply@2sistersandabrush.beauty';
 // $email = 'jasonpberry78@gmail.com'; // for local emails
 
 $phone = $_POST["phone"];
-$howHeard = $_post["how_heard"];
+$howHeard = $_POST["how_heard"];
 $vname = $_POST["vname"];
 $address = $_POST["address"];
 $zipcode = $_POST["zipcode"];
