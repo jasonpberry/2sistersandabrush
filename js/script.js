@@ -100,13 +100,19 @@ Version      : 1.0
 	jQuery('.select-option').chosen({disable_search_threshold:10});
 	
 	//Datepicker
+	var datesForDisable = [
+		"2023-10-14",
+		"2023-10-21",
+		"2023-10-28",
+	];
+
 	jQuery( ".date-pic" ).datepicker({
 		todayBtn: "linked",
-		keyboardNavigation: false,
 		forceParse: false,
-		calendarWeeks: true,
-		autoclose: true,
-		format: 'mm/dd/yyyy'
+		todayHighlight: true,
+		daysOfWeekHighlighted: true,
+		format: 'yyyy-mm-dd',
+		datesDisabled: datesForDisable
 	});
 	
 	//Timepicker
