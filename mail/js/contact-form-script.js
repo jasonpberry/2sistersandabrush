@@ -25,7 +25,7 @@ function reservationSubmitForm(){
 	
     $.ajax({
         type: "POST",
-        url: "mail/php/reservation-form-process.php",
+        url: "/mail/php/reservation-form-process.php",
         data: dataString,
         success : function(text){
             if (text == "success"){
@@ -93,7 +93,7 @@ function submitForm(){
 
     $.ajax({
         type: "POST",
-        url: "mail/php/form-process.php",
+        url: "/mail/php/form-process.php",
         data: dataString,
         success : function(text){
             if (text == "success"){
