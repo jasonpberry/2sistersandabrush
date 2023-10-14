@@ -9,14 +9,15 @@ Version      : 1.0
 	"use strict";
 	
 	
-
-	if (!Cookies.get('popup')) {
-		setTimeout(function() {
-			$('#siteModal').modal();
-		}, 600);
-		Cookies.get('popup', true);
-	} else{
-		// $('#siteModal').modal();
+	if($('#siteModal').length) {
+		if (!Cookies.get('popup')) {
+			setTimeout(function() {
+				$('#siteModal').modal();
+			}, 600);
+			Cookies.get('popup', true);
+		} else{
+			// $('#siteModal').modal();
+		}	
 	}
 
 	$('#siteModal').on('shown.bs.modal', function () {
