@@ -95,8 +95,6 @@ $Body .= $howHeard;
 $Body .= "\n";
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "From: (2 Sisters & A Brush) " . $email . "\r\n";
-$headers .= "BCC: jasonpberry78@gmail.com" . "\r\n";
-$headers .= "BCC: Ldiesel45@gmail.com" . "\r\n";
 $headers .= "Reply-To: " . $email . "\r\n";
 $headers .= "Return-Path: " . $email . "\r\n";
 $headers .= "Content-type:text/plain;charset=UTF-8" . "\r\n";

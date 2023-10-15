@@ -43,9 +43,10 @@ function reservationFormSuccess(){
     reservationSubmitMSG(true, "Your booking request has been submitted successfully. We will be in touch soon!");
     $("#reservation-form").fadeOut(1000);
     // $("#reservation-form")[0].reset();
-	setTimeout(function() { $('#appointment').modal('hide'); 
-        $("#reservation-form").fadeIn(1000); 
-        $('#msgSubmitRes').hide();
+	setTimeout(function() { 
+        // $('#appointment').modal('hide'); 
+        // $("#reservation-form").fadeIn(1000); 
+        // $('#msgSubmitRes').hide();
         $('.booking-title').html('Request to Book Us!');
         $("#booking-submit").attr('disabled', false);
         $("#booking-submit").val("Submit");
