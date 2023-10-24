@@ -243,6 +243,7 @@
 							Make your wedding day truly unforgettable with our exceptional bridal hair and makeup services, ensuring flawless and stunning styles that will leave you feeling like a true bride.
 						</p>
 						<ul>
+							<li>Licensed Cosmetologists</li>
 							<li>Expert team with bridal hair and makeup experience.</li>
 							<li>Customized consultations for your unique style.</li>
 							<li>High-quality, long-lasting products.</li>
@@ -304,6 +305,10 @@
 							</ul>
 							<h2><sub>$</sub>100.00</h2>
 
+							<button style="background-color: green"  type="button" class="btn btn-primary rc-click-pricing" data-toggle="modal" data-target="#ourPricingAndFaq">
+								Service Pricing Calculator
+							</button>			
+
 						</div>
 					</div>
 				</div>
@@ -336,8 +341,12 @@
 							<ul></ul>
 							<h2><sub>$</sub>50.00</h2>
 
+							<button style="background-color: green" type="button" class="btn btn-primary rc-click-pricing" data-toggle="modal" data-target="#ourPricingAndFaq">
+								Service Pricing Calculator
+							</button>			
 						</div>
 					</div>
+
 				</div>				
 			</div>			
 		</div>
@@ -444,9 +453,12 @@
 						<p>
 							Make your wedding day extra special with <em>2 Sisters & A Brush</em>. Book our bridal hair and makeup services to create a flawless look that will leave you feeling confident and beautiful as you walk down the aisle.
 						</p>
-						<p>
-							Click the button below to get started!
-						</p>
+
+						<button style="background-color: green"  type="button" class="btn btn-primary rc-click-pricing" data-toggle="modal" data-target="#ourPricingAndFaq">
+							Service Pricing Calculator
+						</button>			
+
+						&nbsp;
 						<a href="#" data-toggle="modal" data-target="#appointment" class="btn btn-primary rc-click-bookus">Book Us!</a>
 					</div>
 				</div>
@@ -815,7 +827,7 @@
 
 					<div class="col-md-3">
 						<div class="footer-widget">
-							<h3><span class="fa fa-envelope-o"></span> Contact Us</h3>
+							<h3><span class="fa fa-envelope-o"></span> &nbsp; Contact Us</h3>
 							<ul>
 								<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:2sistersandabrushbeauty@gmail.com">2sistersandabrushbeauty</a> <br />&nbsp; &nbsp; &nbsp;<a href="mailto:2sistersandabrushbeauty@gmail.com">@gmail.com</a></li>
 								<li><i class="fa fa-facebook" aria-hidden="true"></i> <a target="_blank" href="https://www.facebook.com/2sistersandabrush/">Facebook</a></li>
@@ -988,7 +1000,7 @@
 
 						
 						<div class="form-group">
-							<label>Party Count</label>
+							<label>Party Count ( Including Bride )</label>
 							<select id="rselect-service" class="select-option" name="party_count" required>
 								<option value="4">4 Adults</option>
 								<option value="5">5 Adults</option>
@@ -1086,28 +1098,48 @@
         </div>
     </div>
 	
-	
-
 	<!-- Bootstrap Modal Markup -->
-
-	<div class="modal" id="siteModal"" tabindex="-1">
+	<div class="modal" id="siteModal"" tabindex=" -1">
 		<div class="modal-dialog">
-		  <div class="modal-content">
-			<div class="modal-header">
-			  <h5 class="modal-title"><span class="fa fa-star"></span> Now Booking 2024!</h5>
-			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			  </button>
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title"><span class="fa fa-star"></span> Now Booking 2024/2025!</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Attention Brides! We are now booking for 2024/2025! Dates book fast so please reach out to us as early as
+						possible!</output></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Got It!</button>
+				</div>
 			</div>
-			<div class="modal-body">
-			  <p>Attention Brides!  We are now booking for 2024!  Dates book fast so please reach out to us as early as possible!</output></p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Got It!</button>
-			</div>
-		  </div>
 		</div>
-	  </div>
+	</div>
+
+	<div class="modal fade" id="ourPricingAndFaq">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title"><i class="fa fa-calculator"></i> Service Pricing Calculator</h3>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body" style="overflow: auto;">
+					<!-- Content loaded via URL will be inserted here -->
+				</div>
+
+				<div class="text-center mt-2">
+					<img src="/img/2sisters-logo.png" alt="2 Sisters &amp; A Brush Logo" style="width: 345px;">
+				</div>
+
+				<br />
+				<br />
+				
+			</div>
+		</div>
+	</div>
 
     <!-- jQuery -->
     <script src="/js/jquery-3.3.1.min.js"></script>

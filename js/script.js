@@ -212,5 +212,22 @@ Version      : 1.0
 		  });
 	});
 
+	$('.rc-click-pricing').click(function() {
+		gtag('event', 'click', {
+			'app_name': 'Pricing Calculator',
+			'screen_name': 'Home'
+		  });
+	});
+
+    // Pricing Calculator Shown
+    $('#ourPricingAndFaq').on('show.bs.modal', function (e) {
+        var url = '/pricing-calculator.html'; // Replace with the URL you want to load
+        var modalBody = $(this).find('.modal-body');
+
+        $.get(url, function (data) {
+            modalBody.html(data);
+        });
+    });
+
 })(jQuery);	
 	
