@@ -1,0 +1,208 @@
+<style>
+
+.shopping-cart-wrapper table td, th{
+    font-size: 14px;
+}
+.shopping-cart-wrapper .totals {
+    font-weight: bold;
+    font-size: 18px;
+}
+.shopping-cart-wrapper .remove {
+    cursor: pointer;
+}
+</style>
+<div class="shopping-cart-wrapper">
+    <table class="table is-fullwidth shopping-cart">
+      <thead>
+        <tr>
+          <th><abbr title="Position"></abbr></th>
+          <th>Service</th>
+          <th>Price</th>
+          <th>Count</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+    </table>
+    <div class="totals">
+      <div class="totals-item text-center">
+        <label>Total Service Pricing</label>
+        <div class="totals-value" id="cart-subtotal">$0</div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+var taxRate = 0.05;
+var shipping = 15.0;
+$(function() {
+  var jsonData = [
+  {
+    //<span style='font-size: 11px;'>(Clip-in extension install included Extensions NOT provided)</span>
+    title: "Bride's <u>Hair</u> -  TRIAL",
+      price: 100,
+      quantity: 1,
+      min: 1,
+      max: 1,
+      total: 100,
+      default: true
+    },
+    {
+    title: "Bride's <u>Hair</u>  - <span style='font-size: 11px;'>(Clip-in extension install included)</span>",
+      price: 120,
+      quantity: 1,
+      min: 1,
+      max: 1,
+      total: 120,
+      default: true
+    },
+    {
+      title: "Bridesmaids <u>Hair</u>",
+      price: 100,
+      quantity: 3,
+      min: 3,
+      max: 9,
+      total: 300,
+      default: true
+    },
+    {
+    title: "Bride's <u>Makeup</u> -  TRIAL",
+      price: 100,
+      quantity: 1,
+      min: 1,
+      max: 1,
+      total: 100,
+      default: true
+    },
+    {
+        //<span style='font-size: 11px;'>(Eyelashes Included)</span>
+      title: "Bride's <u>Makeup</u> - <span style='font-size: 11px;'>(Eyelashes Included)</span>",
+      price: 120,
+      quantity: 1,
+      min: 1,
+      max: 1,
+      total: 120,
+      default: true
+    },
+
+    {
+      title: "Bridesmaids <u>Makeup</u> - <span style='font-size: 11px;'>(Eyelashes Included)</span>",
+      price: 100,
+      quantity: 3,
+      min: 3,
+      max: 9,
+      total: 300,
+      default: true
+    },
+    {
+      title: "Flower Girl <u>Hair</u> - <span style='font-size: 11px;'>(Under 10)</span>",
+      price: 50,
+      quantity: 1,
+      min: 0,
+      max: 9,
+      total: 50,
+      default: false
+    },
+    {
+      title: "Travel Fee  - <span style='font-size: 11px;'>(Under 30 Minutes)</span>",
+      price: 50,
+      quantity: 1,
+      min: 0,
+      max: 1,
+      total: 50,
+      default: false
+    },
+    {
+      title: "Travel Fee  - <span style='font-size: 11px;'>(Over 30 Minutes)</span>",
+      price: 100.00,
+      quantity: 1,
+      min: 0,
+      max: 1,
+      total: 100.00,
+      default: false
+    }
+  ];
+  var html = "<tbody>";
+  $.each(jsonData, function() {
+    console.log(this.defaultChecked);
+    $defaultChecked = this.default ? " checked " : "";
+    html +=
+      '<tr class="cart-item">' +
+      "        <td>" +
+      '          <input type="checkbox" class="cart-item-check" '+ $defaultChecked +' />' +
+      "        </td>" +
+      "        <td>" +
+      "          " +
+      this.title +
+      "        </td>" +
+      "        <td>$" +
+      this.price +
+      "</td>" +
+      "        <td>" +
+      '          <input class="input is-primary cart-item-qty" style="width:35px" type="number" min="' + this.min + '" max="' + this.max + '" value="' +
+      this.quantity +
+      '" data-price="' +
+      this.price +
+      '">' +
+      "        </td>" +
+      '        <td class="cart-item-total">$' +
+      this.total +
+
+      '&nbsp; &nbsp; &nbsp; <a class="button is-small remove pull-right"><span class="fa fa-close"></span></a>' + 
+      "</td>" +
+      "      </tr>";
+  });
+  html += "</tbody>";
+  $(".shopping-cart").append(html);
+  
+  recalculateCart();
+
+  $(".cart-item-check").change(function() {
+    recalculateCart();
+  });
+
+  $(".cart-item-qty").change(function() {
+    var $this = $(this);
+    var parent = $this.parent().parent();
+    parent.find(".cart-item-check").prop("checked", "checked");
+    var price = $this.attr("data-price");
+    var quantity = $this.val();
+    var total = price * quantity;
+    parent.find(".cart-item-total").html('$' + total);
+    recalculateCart();
+  });
+
+  $(".button").click(function() {
+    var parent = $(this)
+      .parent()
+      .parent();
+    parent.remove();
+    recalculateCart();
+  });
+});
+function recalculateCart() {
+  var subTotal = 0;
+  var grandTotal = 0;
+  var tax = 0;
+  var items = $(".cart-item");
+  $.each(items, function() {
+    var itemCheck = $(this).find(".cart-item-check");
+    var itemQuantity = $(this).find(".cart-item-qty");
+    if (itemCheck.prop("checked")) {
+      var itemTotal = itemQuantity.val() * itemQuantity.attr("data-price");
+      subTotal += itemTotal;
+    }
+  });
+  if (subTotal > 0) {
+    tax = subTotal * taxRate;
+    grandTotal = subTotal + tax + shipping;
+    $(".totals,.checkout").show();
+  } else {
+    $(".totals,.checkout").hide();
+  }
+  $("#cart-subtotal").html('$' + subTotal.toFixed(2));
+  $("#cart-total").html(grandTotal.toFixed(2));
+  $("#cart-tax").html(tax.toFixed(2));
+  $("#cart-shipping").html(shipping.toFixed(2));
+}    
+  </script>
