@@ -89,7 +89,7 @@ return array (
   'vendorName' => '2 Sisters & A Brush',
   'vendorUrl' => '',
   'websiteUrl' => '/#setThisInAdminMenu',
-  'serverChangeLog_lastCheck' => 1698384566,
+  'serverChangeLog_lastCheck' => 1698423741,
   'serverChangeLog' => '[
     [1698183028,"Content Delivery Network",""],
     [1698183028,"Operating System","Darwin 22.6.0"],

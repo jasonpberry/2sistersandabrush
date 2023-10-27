@@ -122,13 +122,13 @@ echo "</pre>";
       <div class="col-md-6 pb-3 ">
         <div class="panel panel-left mb-3 ">
             <!-- Content for the left panel -->
+            <a class="float-end" href="?action=logoff">Logout</a>
             <h2><span class="fas fa-home"></span> Hi <?=$weddingsRecord['client_name:label']?>!</h2>
-
 
             <table width="100%" class="table table-striped-rows">
               <tr>
                 <td>
-                  My Email:
+                  Email:
                 </td>
                 <td>
                   <?=@$_REQUEST['email']?>
@@ -152,33 +152,33 @@ echo "</pre>";
             <table width="100%" class="table table-striped-rows">
             <tr>
                 <td>
-                  Bridal Hair Service
+                  Bridal Hair Service (<?=$weddingsRecord['attendants_hair_count'] + 1?>)
                 </td>
                 <td>
-                  $420
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Bridal Makeup Service
-                </td>
-                <td>
-                  $420
+                  $<?=$weddingsRecord['hair_total']?>
                 </td>
               </tr>
               <tr>
                 <td>
-                  Flower Girl
+                  Bridal Makeup Service (<?=$weddingsRecord['attendants_makeup_count'] + 1?>)
                 </td>
                 <td>
-                  $50
+                $<?=$weddingsRecord['makeup_total']?>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Flower Girl (<?=$weddingsRecord['flower_girl_hair_count']?>)
+                </td>
+                <td>
+                  $<?=$weddingsRecord['flower_girl_total']?>
                 </td>
                 <tr>
                 <td>
                   Travel Fee
                 </td>
                 <td>
-                  $100
+                  $<?=$weddingsRecord['travel_fee']?>
                 </td>
               </tr>
               <tr>
@@ -186,7 +186,7 @@ echo "</pre>";
                   <strong>Total</strong>
                 </td>
                 <td>
-                  <strong>$990</strong>
+                  <strong>$<?=$weddingsRecord['total_service_cost']?></strong>
                 </td>
               </tr>
             </table>
@@ -196,13 +196,90 @@ echo "</pre>";
         <div class="panel panel-left mb-3">
             <!-- Content for the left panel -->
             <h2><span class="fas fa-check"></span> Booking Updates</h2>
-            <p>This is the left panel content.</p>
-            <p>This is the left panel content.</p>
-            <p>This is the left panel content.</p>
-            <p>This is the left panel content.</p>
-            <p>This is the left panel content.</p>
-            <p>This is the left panel content.</p>
-            <p>This is the left panel content.</p>
+
+            <p class="alert alert-secondary">
+              As you move from the booking stage to your wedding day, this section will
+              continuously monitor your progress.
+            </p>
+
+            <style>
+              .progress-check-complete {
+                color: green !important;
+                font-weight: bold;
+                font-size: 20px;
+              }
+              .progress-check-incomplete {
+                color: #ddd !important;
+                font-weight: bold;
+                font-size: 20px;
+              }
+            </style>
+
+            <!-- Deposit -->
+            <p>
+              <?php if ($weddingsRecord['deposit_received']): ?>
+                <span class="fas fa-check progress-check-complete"></span> &nbsp; Deposit Received ($<?=$weddingsRecord['deposit_amount']?> on <?=date("F j, Y", $weddingsRecord['deposit_date:unixtime']);?>)
+              <?php else: ?>
+                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Deposit Received
+              <?php endif?>
+            </p>
+
+            <!-- Contract Ready? -->
+            <p>
+              <?php if ($weddingsRecord['contract_ready']): ?>
+                <span class="fas fa-check progress-check-complete"></span> &nbsp; Contract Ready to Sign (<a href="">View</a>)
+              <?php else: ?>
+                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Contract Ready to Sign
+              <?php endif?>
+            </p>
+
+            <!-- Contract Received? -->
+            <p>
+              <?php if ($weddingsRecord['contract_received']): ?>
+                <span class="fas fa-check progress-check-complete"></span> &nbsp; Contract Received
+              <?php else: ?>
+                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Contract Received
+              <?php endif?>
+            </p>
+
+            <!-- Trial Scheduled? -->
+            <p>
+              <?php if ($weddingsRecord['trial_scheduled']): ?>
+                <span class="fas fa-check progress-check-complete"></span> &nbsp; Trial Scheduled For <?=date("l F j, Y - g:i a", $weddingsRecord['trial_scheduled_date:unixtime']);?>)
+              <?php else: ?>
+                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Trial Scheduled
+              <?php endif?>
+            </p>
+
+            <!-- Trial Complete? -->
+            <p>
+              <?php if ($weddingsRecord['trial_complete']): ?>
+                <span class="fas fa-check progress-check-complete"></span> &nbsp; Trial Complete
+              <?php else: ?>
+                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Trial Complete
+              <?php endif?>
+            </p>
+
+            <!-- Wedding Complete? -->
+            <p>
+              <?php if ($weddingsRecord['wedding_complete']): ?>
+                <span class="fas fa-check progress-check-complete"></span> &nbsp; Wedding Complete
+              <?php else: ?>
+                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Wedding Complete
+              <?php endif?>
+            </p>
+
+            <!-- Paid In FULL? -->
+            <p>
+              <?php if ($weddingsRecord['paid_in_full']): ?>
+                <span class="fas fa-check progress-check-complete"></span> &nbsp; Paid In FULL (Thank You!)
+              <?php else: ?>
+                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Paid In FULL
+              <?php endif?>
+            </p>
+
+
+
         </div>
       </div>
 
@@ -251,6 +328,10 @@ echo "</pre>";
                     <td><?=$weddingsRecord['attendants_makeup_count'] + 1?></td>
                 </tr>
                 <tr>
+                    <td>Flower Girl Hair Count</td>
+                    <td><?=$weddingsRecord['flower_girl_hair_count']?></td>
+                </tr>
+                <tr>
                     <td colspan="2">
                       <strong>Additional Details:</strong>
 
@@ -260,10 +341,15 @@ echo "</pre>";
                     </td>
 
                 </tr>
-
-                <!-- Add more rows as needed -->
             </tbody>
         </table>
+
+        <div class="alert alert-primary">
+
+        While utilizing the client portal, kindly notify us of any encountered issues or problems by sending a
+        message to <em><a href="mailto:2sistersandabrushbeauty@gmail.com">2sistersandabrushbeauty@gmail.com</a></em>.
+
+        </div>
 
 
         </div>
@@ -273,6 +359,7 @@ echo "</pre>";
 
 
 <!-- EDIT PROFILE FORM -->
+<!--
   <?php if (@$errorsAndAlerts): ?>
     <div style="color: #C00; font-weight: bold; font-size: 13px;">
       <?php echo $errorsAndAlerts; ?><br>
@@ -298,18 +385,7 @@ echo "</pre>";
    </tr>
 <?php endif?>
 
-<!--
-   <tr>
-    <td>Agree TOS</td>
-    <td>
-      <input type="hidden"   name="agree_tos" value="0">
-      <label>
-        <input type="checkbox" name="agree_tos" value="1" <?php checkedIf('1', @$_REQUEST['agree_tos']);?>>
-        I agree to the <a href="#">terms of service</a>.
-      </label>
-    </td>
-   </tr>
--->
+
    <tr>
     <td colspan="2" align="center">
       <input class="button" type="submit" name="submit" value="Update profile &gt;&gt;">
@@ -318,10 +394,8 @@ echo "</pre>";
   </table>
 
   </form><br>
-<!-- /EDIT PROFILE FORM -->
 
 
-<!-- CHANGE PASSWORD FORM -->
 <div style="border: 1px solid #000; background-color: #EEE; padding: 10px; width: 500px">
   <b>Change Password</b><br>
 
@@ -349,10 +423,8 @@ echo "</pre>";
   </table>
 
   </form>
-</div><br>
-<!-- /CHANGE PASSWORD -->
+</div><br> -->
 
-<a href="?action=logoff">Logoff</a>
 
 <?php include_once "../includes/footer.php"?>
 
