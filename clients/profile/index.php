@@ -94,269 +94,319 @@ list($weddingsRecords, $weddingsMetaData) = getRecords(array(
 ));
 
 $weddingsRecord = @$weddingsRecords[0]; // get first record
-if (!$weddingsRecord) {dieWith404("Record not found!");} // show error message if no record found
+// if (!$weddingsRecord) {dieWith404("Record not found!");} // show error message if no record found
 
-// load record from 'weddings'  // load record from 'weddings'
-list($venuesRecords, $venuesMetaData) = getRecords(array(
-    'tableName' => 'event_venues',
-    'where' => 'num=' . $weddingsRecord['venue_name'], // load first record
-    'loadUploads' => false,
-    'allowSearch' => false,
-    'limit' => '1',
-));
-$venueRecord = @$venuesRecords[0]; // get first record
+// load record from 'event_venues'  // load record from 'weddings'
+if ($weddingsRecord) {
+    list($venuesRecords, $venuesMetaData) = getRecords(array(
+        'tableName' => 'event_venues',
+        'where' => 'num=' . $weddingsRecord['venue_name'], // load first record
+        'loadUploads' => false,
+        'allowSearch' => false,
+        'limit' => '1',
+    ));
+    $venueRecord = @$venuesRecords[0]; // get first record
+}
 
-echo "<pre>";
+// Services
+$serviceHair = false;
+$serviceMakeup = false;
+$serviceFlowerGirlHair = false;
+// Trials?
+$serviceHairTrial = false;
+$serviceMakeupTrial = false;
+
+// Check Services
+if (in_array(4, $weddingsRecord['services:values'])) {$serviceHair = true;}
+if (in_array(2, $weddingsRecord['services:values'])) {$serviceMakeup = true;}
+
+// Check Trial Services
+if (in_array(1, $weddingsRecord['services:values'])) {$serviceHairTrial = true;}
+if (in_array(3, $weddingsRecord['services:values'])) {$serviceMakeupTrial = true;}
+
+// Flower Girl Hair Service
+if (in_array(6, $weddingsRecord['services:values'])) {$serviceFlowerGirlHair = true;}
+
+// echo "<pre>";
 // print_r($weddingsRecord);
 // echo "<br>";
 // print_r($venueRecord);
 // print_r($CURRENT_USER);
 // echo "<br>";
 // print_r($weddingsRecord['venue_name:label']);
-echo "</pre>";
+// echo "</pre>";
 ?>
 
+<?php if ($weddingsRecord): ?>
 
-<div class="container">
-  <div class="row justify-content-center">
-      <div class="col-md-6 pb-3 ">
-        <div class="panel panel-left mb-3 ">
-            <!-- Content for the left panel -->
-            <a class="float-end" href="?action=logoff">Logout</a>
-            <h2><span class="fas fa-home"></span> Hi <?=$weddingsRecord['client_name:label']?>!</h2>
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 pb-3 ">
+          <div class="panel panel-left mb-3 ">
+              <!-- Content for the left panel -->
+              <a class="float-end" href="?action=logoff">Logout</a>
+              <h2><span class="fas fa-home"></span> Hi <?=$weddingsRecord['client_name:label']?>!</h2>
 
-            <table width="100%" class="table table-striped-rows">
-              <tr>
-                <td>
-                  Email:
-                </td>
-                <td>
-                  <?=@$_REQUEST['email']?>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Phone Number:
-                </td>
-                <td>
-                  <?=@$CURRENT_USER['cell_number']?>
-                </td>
-              </tr>
-            </table>
-        </div>
-
-        <div class="panel panel-left mb-3">
-            <!-- Content for the left panel -->
-            <h2><span class="fas fa-dollar-sign"></span> Booking Pricing</h2>
-
-            <table width="100%" class="table table-striped-rows">
-            <tr>
-                <td>
-                  Bridal Hair Service (<?=$weddingsRecord['attendants_hair_count'] + 1?>)
-                </td>
-                <td>
-                  $<?=$weddingsRecord['hair_total']?>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Bridal Makeup Service (<?=$weddingsRecord['attendants_makeup_count'] + 1?>)
-                </td>
-                <td>
-                $<?=$weddingsRecord['makeup_total']?>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Flower Girl (<?=$weddingsRecord['flower_girl_hair_count']?>)
-                </td>
-                <td>
-                  $<?=$weddingsRecord['flower_girl_total']?>
-                </td>
+              <table width="100%" class="table table-striped-rows">
                 <tr>
-                <td>
-                  Travel Fee
-                </td>
-                <td>
-                  $<?=$weddingsRecord['travel_fee']?>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Total</strong>
-                </td>
-                <td>
-                  <strong>$<?=$weddingsRecord['total_service_cost']?></strong>
-                </td>
-              </tr>
-            </table>
-
-        </div>
-
-        <div class="panel panel-left mb-3">
-            <!-- Content for the left panel -->
-            <h2><span class="fas fa-check"></span> Booking Updates</h2>
-
-            <p class="alert alert-secondary">
-              As you move from the booking stage to your wedding day, this section will
-              continuously monitor your progress.
-            </p>
-
-            <style>
-              .progress-check-complete {
-                color: green !important;
-                font-weight: bold;
-                font-size: 20px;
-              }
-              .progress-check-incomplete {
-                color: #ddd !important;
-                font-weight: bold;
-                font-size: 20px;
-              }
-            </style>
-
-            <!-- Deposit -->
-            <p>
-              <?php if ($weddingsRecord['deposit_received']): ?>
-                <span class="fas fa-check progress-check-complete"></span> &nbsp; Deposit Received ($<?=$weddingsRecord['deposit_amount']?> on <?=date("F j, Y", $weddingsRecord['deposit_date:unixtime']);?>)
-              <?php else: ?>
-                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Deposit Received
-              <?php endif?>
-            </p>
-
-            <!-- Contract Ready? -->
-            <p>
-              <?php if ($weddingsRecord['contract_ready']): ?>
-                <span class="fas fa-check progress-check-complete"></span> &nbsp; Contract Ready to Sign (<a href="">View</a>)
-              <?php else: ?>
-                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Contract Ready to Sign
-              <?php endif?>
-            </p>
-
-            <!-- Contract Received? -->
-            <p>
-              <?php if ($weddingsRecord['contract_received']): ?>
-                <span class="fas fa-check progress-check-complete"></span> &nbsp; Contract Received
-              <?php else: ?>
-                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Contract Received
-              <?php endif?>
-            </p>
-
-            <!-- Trial Scheduled? -->
-            <p>
-              <?php if ($weddingsRecord['trial_scheduled']): ?>
-                <span class="fas fa-check progress-check-complete"></span> &nbsp; Trial Scheduled For <?=date("l F j, Y - g:i a", $weddingsRecord['trial_scheduled_date:unixtime']);?>)
-              <?php else: ?>
-                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Trial Scheduled
-              <?php endif?>
-            </p>
-
-            <!-- Trial Complete? -->
-            <p>
-              <?php if ($weddingsRecord['trial_complete']): ?>
-                <span class="fas fa-check progress-check-complete"></span> &nbsp; Trial Complete
-              <?php else: ?>
-                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Trial Complete
-              <?php endif?>
-            </p>
-
-            <!-- Wedding Complete? -->
-            <p>
-              <?php if ($weddingsRecord['wedding_complete']): ?>
-                <span class="fas fa-check progress-check-complete"></span> &nbsp; Wedding Complete
-              <?php else: ?>
-                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Wedding Complete
-              <?php endif?>
-            </p>
-
-            <!-- Paid In FULL? -->
-            <p>
-              <?php if ($weddingsRecord['paid_in_full']): ?>
-                <span class="fas fa-check progress-check-complete"></span> &nbsp; Paid In FULL (Thank You!)
-              <?php else: ?>
-                <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Paid In FULL
-              <?php endif?>
-            </p>
-
-
-
-        </div>
-      </div>
-
-
-      <div class="col-md-6">
-        <div class="panel panel-right">
-            <!-- Content for the right panel -->
-            <h2><span class="fas fa-calendar"></span> Booking Details</h2>
-
-            <table class="table table-striped ">
-            <tbody>
-            <tr>
-                    <td>Date</td>
-                    <td><?=date("l - F j, Y", $weddingsRecord['wedding_date:unixtime']);?></td>
-                </tr>
-                <tr>
-                    <td>Ready By</td>
-                    <td><?=date("g:i a", $weddingsRecord['wedding_date:unixtime']);?></td>
-                </tr>
-                <tr>
-                    <td>Venue</td>
-                    <td>
-                      <strong><?=$weddingsRecord['venue_name:label']?></strong>
-                      <p>
-                        <?=$venueRecord['venue_address'];?>
-                      </p>
+                  <td>
+                    Email:
+                  </td>
+                  <td>
+                    <?=@$_REQUEST['email']?>
                   </td>
                 </tr>
                 <tr>
-                    <td>Bridal Services</td>
-                    <td>
+                  <td>
+                    Phone Number:
+                  </td>
+                  <td>
+                    <?=@$CURRENT_USER['cell_number']?>
+                  </td>
+                </tr>
+              </table>
+          </div>
 
-                      <?php foreach ($weddingsRecord['services:labels'] as $key => $record): ?>
+          <div class="panel panel-left mb-3">
+              <!-- Content for the left panel -->
+              <h2><span class="fas fa-dollar-sign"></span> Booking Pricing</h2>
+
+              <table width="100%" class="table table-striped-rows">
+              <tr>
+                  <td>
+                    Bridal Hair Service (<?=$weddingsRecord['attendants_hair_count'] + 1?>)
+                  </td>
+                  <td>
+                    $<?=$weddingsRecord['hair_total']?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Bridal Makeup Service (<?=$weddingsRecord['attendants_makeup_count'] + 1?>)
+                  </td>
+                  <td>
+                  $<?=$weddingsRecord['makeup_total']?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Flower Girl (<?=$weddingsRecord['flower_girl_hair_count']?>)
+                  </td>
+                  <td>
+                    $<?=$weddingsRecord['flower_girl_total']?>
+                  </td>
+                  <tr>
+                  <td>
+                    Travel Fee
+                  </td>
+                  <td>
+                    $<?=$weddingsRecord['travel_fee']?>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Total</strong>
+                  </td>
+                  <td>
+                    <strong>$<?=$weddingsRecord['total_service_cost']?></strong>
+                  </td>
+                </tr>
+              </table>
+
+          </div>
+
+          <div class="panel panel-left mb-3">
+              <!-- Content for the left panel -->
+              <h2><span class="fas fa-check"></span> Booking Updates</h2>
+
+              <p class="alert alert-secondary">
+                As you move from the booking stage to your wedding day, this section will
+                continuously monitor your progress.
+              </p>
+
+              <style>
+                .progress-check-complete {
+                  color: green !important;
+                  font-weight: bold;
+                  font-size: 20px;
+                }
+                .progress-check-incomplete {
+                  color: #ddd !important;
+                  font-weight: bold;
+                  font-size: 20px;
+                }
+              </style>
+
+              <!-- Deposit -->
+              <p>
+                <?php if ($weddingsRecord['deposit_received']): ?>
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Deposit Received ($<?=$weddingsRecord['deposit_amount']?> on <?=date("F j, Y", $weddingsRecord['deposit_date:unixtime']);?>)
+                <?php else: ?>
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Deposit Received
+                <?php endif?>
+              </p>
+
+              <!-- Contract Ready? -->
+              <p>
+                <?php if ($weddingsRecord['contract_ready']): ?>
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Contract Ready to Sign (<a href="">View</a>)
+                <?php else: ?>
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Contract Ready to Sign
+                <?php endif?>
+              </p>
+
+              <!-- Contract Received? -->
+              <p>
+                <?php if ($weddingsRecord['contract_received']): ?>
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Contract Received
+                <?php else: ?>
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Contract Received
+                <?php endif?>
+              </p>
+
+              <!-- Trial Scheduled? -->
+              <p>
+                <?php if ($weddingsRecord['trial_scheduled']): ?>
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Trial Scheduled For <?=date("l F j, Y - g:i a", $weddingsRecord['trial_scheduled_date:unixtime']);?>)
+                <?php else: ?>
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Trial Scheduled
+                <?php endif?>
+              </p>
+
+              <!-- Trial Complete? -->
+              <p>
+                <?php if ($weddingsRecord['trial_complete']): ?>
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Trial Complete
+                <?php else: ?>
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Trial Complete
+                <?php endif?>
+              </p>
+
+              <!-- Wedding Complete? -->
+              <p>
+                <?php if ($weddingsRecord['wedding_complete']): ?>
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Wedding Complete
+                <?php else: ?>
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Wedding Complete
+                <?php endif?>
+              </p>
+
+              <!-- Paid In FULL? -->
+              <p>
+                <?php if ($weddingsRecord['paid_in_full']): ?>
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Paid In FULL (Thank You!)
+                <?php else: ?>
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Paid In FULL
+                <?php endif?>
+              </p>
+
+
+
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div class="panel panel-right">
+              <!-- Content for the right panel -->
+              <h2><span class="fas fa-calendar"></span> Booking Details</h2>
+
+              <table class="table table-striped ">
+              <tbody>
+              <tr>
+                      <td>Date</td>
+                      <td><?=date("l - F j, Y", $weddingsRecord['wedding_date:unixtime']);?></td>
+                  </tr>
+                  <tr>
+                      <td>Ready By</td>
+                      <td><?=date("g:i a", $weddingsRecord['wedding_date:unixtime']);?></td>
+                  </tr>
+                  <tr>
+                      <td>Venue</td>
+                      <td>
+                        <strong><?=$weddingsRecord['venue_name:label']?></strong>
                         <p>
-                          <span class="fas fa-check"></span> <?=$record?>
+                          <?=$venueRecord['venue_address'];?>
                         </p>
-                      <?php endforeach?>
                     </td>
-                </tr>
-                <tr>
-                    <td>Hair Count</td>
-                    <td><?=$weddingsRecord['attendants_hair_count'] + 1?></td>
-                </tr>
-                <tr>
-                    <td>Makeup Count</td>
-                    <td><?=$weddingsRecord['attendants_makeup_count'] + 1?></td>
-                </tr>
-                <tr>
-                    <td>Flower Girl Hair Count</td>
-                    <td><?=$weddingsRecord['flower_girl_hair_count']?></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                      <strong>Additional Details:</strong>
+                  </tr>
+                  <tr>
+                      <td>Bridal Services</td>
+                      <td>
 
-                      <p>
-                        <em><?=$weddingsRecord['additional_details_from_bride']?></em>
-                      </p>
-                    </td>
+                        <?php foreach ($weddingsRecord['services:labels'] as $key => $record): ?>
+                          <p>
+                            <span class="fas fa-check"></span> <?=$record?>
+                          </p>
+                        <?php endforeach?>
+                      </td>
+                  </tr>
+                  <?php if ($serviceHair): ?>
+                    <tr>
+                        <td>Hair Count</td>
+                        <td><?=$weddingsRecord['attendants_hair_count'] + 1?> - (Includes Bride)</td>
+                    </tr>
+                  <?php endif;?>
+                  <?php if ($serviceMakeup): ?>
+                    <tr>
+                        <td>Makeup Count</td>
+                        <td><?=$weddingsRecord['attendants_makeup_count'] + 1?> - (Includes Bride)</td>
+                    </tr>
+                  <?php endif;?>
+                  <?php if ($serviceFlowerGirlHair): ?>
+                    <tr>
+                        <td>Flower Girl Hair Count</td>
+                        <td><?=$weddingsRecord['flower_girl_hair_count']?></td>
+                    </tr>
+                  <?php endif;?>
+                  <tr>
+                      <td colspan="2">
+                        <strong>Additional Details:</strong>
 
-                </tr>
-            </tbody>
-        </table>
+                        <p>
+                          <em><?=$weddingsRecord['additional_details_from_bride']?></em>
+                        </p>
+                      </td>
 
-        <div class="alert alert-primary">
+                  </tr>
+              </tbody>
+          </table>
 
-        While utilizing the client portal, kindly notify us of any encountered issues or problems by sending a
-        message to <em><a href="mailto:2sistersandabrushbeauty@gmail.com">2sistersandabrushbeauty@gmail.com</a></em>.
+          <div class="alert alert-primary">
 
+          While utilizing the client portal, kindly notify us of any encountered issues or problems by sending a
+          message to <em><a href="mailto:2sistersandabrushbeauty@gmail.com">2sistersandabrushbeauty@gmail.com</a></em>.
+
+          </div>
+
+
+          </div>
         </div>
-
-
-        </div>
-      </div>
+    </div>
   </div>
-</div>
+<?php else: ?>
 
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 pb-3 ">
+          <div class="alert alert-secondary">
+
+              <h3>Hi <?=$CURRENT_USER['fullname']?>!</h3>
+
+              <p>
+                Thank you for accessing the 2 Sisters & A Brush client portal. We are currently in the
+                process of inputting your booking information into our system.
+              </p>
+
+              <p>
+
+              </p>
+          </div>
+        </div>
+    </div>
+  </div>
+
+<?php endif;?>
 
 <!-- EDIT PROFILE FORM -->
 <!--

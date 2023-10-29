@@ -16,8 +16,8 @@
     }
     .text-logo {
       font-family: "Sacramento";
-      font-size: 38px;
-      padding: 20px 0;
+      font-size: 45px;
+      padding: 10px 0 10px 0;
     }
   </style>
 

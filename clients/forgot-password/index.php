@@ -23,11 +23,11 @@ if (!empty($CURRENT_USER)) {
 if ($isRequestPage && isset($_POST['submitForm'])) {
 
     // error checking
-    if (empty($_REQUEST['usernameOrEmail'])) {$errorsAndAlerts .= "No username or email specified!\n";}
+    if (empty($_REQUEST['usernameOrEmail'])) {$errorsAndAlerts .= "Please Enter Username / Email\n";}
     if (!$errorsAndAlerts) {
         $where = mysql_escapef("? IN (`username`,`email`)", $_REQUEST['usernameOrEmail']);
         $user = mysql_get(accountsTable(), null, $where);
-        if (!$user) {$errorsAndAlerts .= "No matching username or email was found!\n";} elseif (!isValidEmail($user['email'])) {$errorsAndAlerts .= "User doesn't have a valid email specified!\n";}
+        if (!$user) {$errorsAndAlerts .= "Account Not Found!\n";} elseif (!isValidEmail($user['email'])) {$errorsAndAlerts .= "User doesn't have a valid email specified!\n";}
     }
 
     // send password reset email
@@ -87,77 +87,50 @@ if ($isResetPage) {
 // END: RESET PASSWORD FORM
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title></title>
-  <style>
-    body          { font-family: arial; }
-    .instructions { border: 3px solid #000; background-color: #EEE; padding: 10px; text-align: left; margin: 25px}
-  </style>
-</head>
-<body>
+
+<?php include_once "../includes/header.php"?>
 
 
   <!-- PAGE TITLE -->
-  <?php if ($isRequestPage): ?> <h1>Forgot your password?</h1> <?php endif?>
-  <?php if ($isResetPage): ?> <h1>Reset your Password</h1> <?php endif?>
+
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+          <div class="panel panel-center ">
+
+              <?php if ($isRequestPage): ?> <h1 class="text-center mb-3">Forgot Password?</h1> <?php endif?>
+              <?php if ($isResetPage): ?> <h1 class="text-center mb-3">Reset Password</h1> <?php endif?>
+
+              <?php if (@$errorsAndAlerts): ?>
+                <div class="alert alert-danger">
+                  <?php echo $errorsAndAlerts; ?><br>
+                </div>
+              <?php endif?>
+
+              <?php if ($isRequestPage && $showForm): ?>
+
+                <form action="?" method="post">
+                  <input type="hidden" name="submitForm" value="1">
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example3">Email:</label>
+                      <input class="form-control" type="text" name="usernameOrEmail" value="<?php echo htmlencode(@$_REQUEST['useusernameOrEmailrname']); ?>" size="30" autocomplete="off">
+                    </div>
+
+                    <button type="submit" name="submit" class="btn btn-primary btn-block mb-4">
+                      Lookup
+                    </button>
+                </form>
+              <?php endif;?>
+              <br />
+              <p>
+                <a class="float-end" href="<?php echo "/clients/" ?>">Client Portal Login</a >
+              </p>
+          </div>
+        </div>
+    </div>
+  </div>
 
 
-  <!-- ERRORS & ALERTS -->
-  <?php if (@$errorsAndAlerts): ?>
-    <div style="color: #C00; font-weight: bold;"><?php echo $errorsAndAlerts; ?></div>
-  <?php endif?>
 
-
-  <!-- START: REQUEST FORGOT PASSWORD EMAIL -->
-  <?php if ($isRequestPage && $showForm): ?>
-    <p>Just enter your username or email address to reset your password.</p>
-
-    <form action="?" method="post">
-      <input type="hidden" name="submitForm" value="1">
-      Email or username:
-      <input type="text" name="usernameOrEmail" value="<?php echo htmlencode(@$_REQUEST['usernameOrEmail']) ?>" size="20" autocomplete="off" autofocus>
-      <input type="submit" name="submit" value="Lookup">
-    </form>
-  <?php endif?>
-  <!-- END: REQUEST FORGOT PASSWORD EMAIL -->
-
-
-  <!-- START: RESET PASSWORD FORM -->
-  <?php if ($isResetPage && $showForm): ?>
-    <form method="post" action="?">
-    <input type="hidden" name="userNum"    value="<?php echo htmlencode(@$_REQUEST['userNum']); ?>">
-    <input type="hidden" name="resetCode"  value="<?php echo htmlencode(@$_REQUEST['resetCode']); ?>">
-    <input type="hidden" name="submitForm" value="1">
-
-    <table border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td><?php et('Username')?></td>
-        <td style="padding: 10px 0px"><?php echo htmlencode($user['username']); ?></td>
-      </tr>
-      <tr>
-        <td><?php et('New Password')?></td>
-        <td><input class="text-input" type="password" name="password"  value="<?php echo htmlencode(@$_REQUEST['password']) ?>" autocomplete="off"></td>
-      </tr>
-      <tr>
-        <td><?php et('New Password (again)')?> &nbsp;</td>
-        <td><input class="text-input" type="password" name="password:again"  value="<?php echo htmlencode(@$_REQUEST['password:again']) ?>" autocomplete="off"></td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td><input class="button" type="submit" name="send" value="<?php et('Update')?>"></td>
-      </tr>
-    </table>
-    </form>
-    <?php endif?>
-    <!-- /RESET PASSWORD FORM -->
-
-
-  <!-- FOOTER -->
-  <br>
-  <a href="<?php echo $GLOBALS['WEBSITE_LOGIN_LOGIN_FORM_URL'] ?>">&lt;&lt; Login Page</a>
-
-</body>
-</html>
+  <?php include_once "../includes/footer.php";
