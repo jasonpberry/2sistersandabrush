@@ -88,7 +88,7 @@ foreach ($CURRENT_USER as $name => $value) {
 list($weddingsRecords, $weddingsMetaData) = getRecords(array(
     'tableName' => 'weddings',
     'where' => 'client_name=' . $CURRENT_USER['num'], // load first record
-    'loadUploads' => false,
+    'loadUploads' => true,
     'allowSearch' => false,
     'limit' => '1',
 ));
@@ -117,15 +117,19 @@ $serviceHairTrial = false;
 $serviceMakeupTrial = false;
 
 // Check Services
-if (in_array(4, $weddingsRecord['services:values'])) {$serviceHair = true;}
-if (in_array(2, $weddingsRecord['services:values'])) {$serviceMakeup = true;}
 
-// Check Trial Services
-if (in_array(1, $weddingsRecord['services:values'])) {$serviceHairTrial = true;}
-if (in_array(3, $weddingsRecord['services:values'])) {$serviceMakeupTrial = true;}
+if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
+    if (in_array(4, $weddingsRecord['services:values'])) {$serviceHair = true;}
+    if (in_array(2, $weddingsRecord['services:values'])) {$serviceMakeup = true;}
 
-// Flower Girl Hair Service
-if (in_array(6, $weddingsRecord['services:values'])) {$serviceFlowerGirlHair = true;}
+    // Check Trial Services
+    if (in_array(1, $weddingsRecord['services:values'])) {$serviceHairTrial = true;}
+    if (in_array(3, $weddingsRecord['services:values'])) {$serviceMakeupTrial = true;}
+
+    // Flower Girl Hair Service
+    if (in_array(6, $weddingsRecord['services:values'])) {$serviceFlowerGirlHair = true;}
+
+}
 
 // echo "<pre>";
 // print_r($weddingsRecord);
@@ -172,22 +176,39 @@ if (in_array(6, $weddingsRecord['services:values'])) {$serviceFlowerGirlHair = t
               <h2><span class="fas fa-dollar-sign"></span> Booking Pricing</h2>
 
               <table width="100%" class="table table-striped-rows">
-              <tr>
-                  <td>
-                    Bridal Hair Service (<?=$weddingsRecord['attendants_hair_count'] + 1?>)
-                  </td>
-                  <td>
-                    $<?=$weddingsRecord['hair_total']?>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Bridal Makeup Service (<?=$weddingsRecord['attendants_makeup_count'] + 1?>)
-                  </td>
-                  <td>
-                  $<?=$weddingsRecord['makeup_total']?>
-                  </td>
-                </tr>
+
+               <?php if ($serviceHairTrial || $serviceMakeupTrial): ?>
+                  <tr>
+                      <td>
+                        Hair/Makeup Trial(s)
+                      </td>
+                      <td>
+                        $<?=$weddingsRecord['hair_makeup_trial_total']?>
+                      </td>
+                  </tr>
+                <?php endif;?>
+
+                <?php if ($serviceHair): ?>
+                  <tr>
+                      <td>
+                        Bridal Hair Service (<?=$weddingsRecord['attendants_hair_count'] + 1?>)
+                      </td>
+                      <td>
+                        $<?=$weddingsRecord['hair_total']?>
+                      </td>
+                  </tr>
+                <?php endif;?>
+                <?php if ($serviceMakeup): ?>
+                  <tr>
+                    <td>
+                      Bridal Makeup Service (<?=$weddingsRecord['attendants_makeup_count'] + 1?>)
+                    </td>
+                    <td>
+                    $<?=$weddingsRecord['makeup_total']?>
+                    </td>
+                  </tr>
+                <?php endif;?>
+                <?php if ($serviceFlowerGirlHair): ?>
                 <tr>
                   <td>
                     Flower Girl (<?=$weddingsRecord['flower_girl_hair_count']?>)
@@ -195,7 +216,9 @@ if (in_array(6, $weddingsRecord['services:values'])) {$serviceFlowerGirlHair = t
                   <td>
                     $<?=$weddingsRecord['flower_girl_total']?>
                   </td>
-                  <tr>
+                </tr>
+                <?php endif;?>
+                <tr>
                   <td>
                     Travel Fee
                   </td>
@@ -249,9 +272,9 @@ if (in_array(6, $weddingsRecord['services:values'])) {$serviceFlowerGirlHair = t
               <!-- Contract Ready? -->
               <p>
                 <?php if ($weddingsRecord['contract_ready']): ?>
-                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Contract Ready to Sign (<a href="">View</a>)
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Signed Contract <?php if (!$weddingsRecord['contract_received']): ?>(<a href="">View</a>)<?php endif;?>
                 <?php else: ?>
-                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Contract Ready to Sign
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Sign Contract
                 <?php endif?>
               </p>
 
@@ -259,35 +282,45 @@ if (in_array(6, $weddingsRecord['services:values'])) {$serviceFlowerGirlHair = t
               <p>
                 <?php if ($weddingsRecord['contract_received']): ?>
                   <span class="fas fa-check progress-check-complete"></span> &nbsp; Contract Received
+
+                  <?php if (is_array($weddingsRecord['signed_contract']) && array_key_exists(0, $weddingsRecord['signed_contract'])): ?>
+
+                    - <a href="<?=$weddingsRecord['signed_contract'][0]['urlPath'];?>">Download Signed Contract</a>
+
+                  <?php endif;?>
+
+
                 <?php else: ?>
                   <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Contract Received
                 <?php endif?>
               </p>
 
-              <!-- Trial Scheduled? -->
-              <p>
-                <?php if ($weddingsRecord['trial_scheduled']): ?>
-                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Trial Scheduled For <?=date("l F j, Y - g:i a", $weddingsRecord['trial_scheduled_date:unixtime']);?>)
-                <?php else: ?>
-                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Trial Scheduled
-                <?php endif?>
-              </p>
+              <?php if ($serviceHairTrial || $serviceMakeupTrial): ?>
+                <!-- Trial Scheduled? -->
+                <p>
+                  <?php if ($weddingsRecord['trial_scheduled']): ?>
+                    <span class="fas fa-check progress-check-complete"></span> &nbsp; Trial Scheduled For <?=date("l F j, Y - g:i a", $weddingsRecord['trial_scheduled_date:unixtime']);?>)
+                  <?php else: ?>
+                    <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Schedule Trial
+                  <?php endif?>
+                </p>
 
-              <!-- Trial Complete? -->
-              <p>
-                <?php if ($weddingsRecord['trial_complete']): ?>
-                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Trial Complete
-                <?php else: ?>
-                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Trial Complete
-                <?php endif?>
-              </p>
+                <!-- Trial Complete? -->
+                <p>
+                  <?php if ($weddingsRecord['trial_complete']): ?>
+                    <span class="fas fa-check progress-check-complete"></span> &nbsp; Trial Complete
+                  <?php else: ?>
+                    <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Your Trial
+                  <?php endif?>
+                </p>
+              <?php endif;?>
 
               <!-- Wedding Complete? -->
               <p>
                 <?php if ($weddingsRecord['wedding_complete']): ?>
                   <span class="fas fa-check progress-check-complete"></span> &nbsp; Wedding Complete
                 <?php else: ?>
-                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Wedding Complete
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Your Wedding!
                 <?php endif?>
               </p>
 
@@ -296,7 +329,7 @@ if (in_array(6, $weddingsRecord['services:values'])) {$serviceFlowerGirlHair = t
                 <?php if ($weddingsRecord['paid_in_full']): ?>
                   <span class="fas fa-check progress-check-complete"></span> &nbsp; Paid In FULL (Thank You!)
                 <?php else: ?>
-                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Paid In FULL
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Final Payment
                 <?php endif?>
               </p>
 
