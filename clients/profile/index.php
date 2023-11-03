@@ -285,7 +285,7 @@ if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
 
                   <?php if (is_array($weddingsRecord['signed_contract']) && array_key_exists(0, $weddingsRecord['signed_contract'])): ?>
 
-                    - <a href="<?=$weddingsRecord['signed_contract'][0]['urlPath'];?>">Download Signed Contract</a>
+                    - <a href="<?=$weddingsRecord['signed_contract'][0]['urlPath'];?>" target="_signed_contract">Download Signed Contract</a>
 
                   <?php endif;?>
 
