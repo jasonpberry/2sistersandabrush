@@ -149,7 +149,7 @@ if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
           <div class="panel panel-left mb-3 ">
               <!-- Content for the left panel -->
               <a class="float-end" href="?action=logoff">Logout</a>
-              <h2><span class="fas fa-home"></span> Hi <?=$weddingsRecord['client_name:label']?>!</h2>
+              <h2><span class="fas fa-home"></span> Hello, <?=$weddingsRecord['client_name:label']?>!</h2>
 
               <table width="100%" class="table table-striped-rows">
                 <tr>
@@ -272,7 +272,7 @@ if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
               <!-- Contract Ready? -->
               <p>
                 <?php if ($weddingsRecord['contract_ready']): ?>
-                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Signed Contract <?php if (!$weddingsRecord['contract_received']): ?>(<a href="">View</a>)<?php endif;?>
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Contract Ready To Sign <?php if (!$weddingsRecord['contract_received']): ?>( <a target="_2saab_contract" href="/clients/contract/">View, Print & Sign & Return</a> )<?php endif;?>
                 <?php else: ?>
                   <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Sign Contract
                 <?php endif?>
