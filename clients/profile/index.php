@@ -260,14 +260,6 @@ if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
                 }
               </style>
 
-              <!-- Deposit -->
-              <p>
-                <?php if ($weddingsRecord['deposit_received']): ?>
-                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Deposit Received ($<?=$weddingsRecord['deposit_amount']?> on <?=date("F j, Y", $weddingsRecord['deposit_date:unixtime']);?>)
-                <?php else: ?>
-                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Deposit Received
-                <?php endif?>
-              </p>
 
               <!-- Contract Ready? -->
               <p>
@@ -275,6 +267,15 @@ if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
                   <span class="fas fa-check progress-check-complete"></span> &nbsp; Contract Ready To Sign <?php if (!$weddingsRecord['contract_received']): ?>( <a target="_2saab_contract" href="/clients/contract/">View, Print & Sign & Return</a> )<?php endif;?>
                 <?php else: ?>
                   <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Sign Contract
+                <?php endif?>
+              </p>
+
+              <!-- Deposit -->
+              <p>
+                <?php if ($weddingsRecord['deposit_received']): ?>
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Deposit Received ($<?=$weddingsRecord['deposit_amount']?> on <?=date("F j, Y", $weddingsRecord['deposit_date:unixtime']);?>)
+                <?php else: ?>
+                  <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Deposit Required - Venmo $<?=($weddingsRecord['deposit_amount']) ? $weddingsRecord['deposit_amount'] : '200';?> @Lauren-Diesel
                 <?php endif?>
               </p>
 

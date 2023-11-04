@@ -60,7 +60,7 @@ if (isset($redirectUser)) {
                 </form>
 
                 <p>
-                  <a class="float-end" href="<?php echo $GLOBALS['WEBSITE_LOGIN_REMINDER_URL'] ?>">Forgot your password?</a >
+                  <!-- <a class="float-end" href="<?php echo $GLOBALS['WEBSITE_LOGIN_REMINDER_URL'] ?>">Forgot your password?</a > -->
                 </p>
           </div>
         </div>
