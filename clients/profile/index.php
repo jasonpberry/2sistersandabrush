@@ -79,6 +79,11 @@ foreach ($CURRENT_USER as $name => $value) {
     $_REQUEST[$name] = $value;
 }
 
+// Impersonate a user
+if (isset($_REQUEST['id'])) {
+    $CURRENT_USER['num'] = 21;
+}
+
 ?>
 
 <?php include_once "../includes/header.php"?>
@@ -319,7 +324,7 @@ if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
               <!-- Wedding Complete? -->
               <p>
                 <?php if ($weddingsRecord['wedding_complete']): ?>
-                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Wedding Complete
+                  <span class="fas fa-check progress-check-complete"></span> &nbsp; Wedding Complete! Congratulations!!
                 <?php else: ?>
                   <span class="fas fa-check progress-check-incomplete"></span> &nbsp; Your Wedding!
                 <?php endif?>
