@@ -109,8 +109,8 @@ if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
     </style>
 
 </head>
-<!-- <body onload="window.print()"> -->
-<body>
+<body onload="window.print()">
+<!-- <body> -->
     <div class="text-center" style="text-align:center; padding: 10px;">
         <img src="https://www.2sistersandabrush.beauty/img/2sisters-logo.png" width="450" style="width: 100%; max-width: 400px;">
         <h1>Bridal Hair & Makeup Contract</h1>
