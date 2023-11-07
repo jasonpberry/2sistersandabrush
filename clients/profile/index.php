@@ -81,7 +81,7 @@ foreach ($CURRENT_USER as $name => $value) {
 
 // Impersonate a user
 if (isset($_REQUEST['id'])) {
-    $CURRENT_USER['num'] = 21;
+    $CURRENT_USER['num'] = $_REQUEST['id'];
 }
 
 ?>
