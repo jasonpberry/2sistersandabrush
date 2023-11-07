@@ -22,6 +22,21 @@
   </style>
 
 </head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K4DEP3LSGW"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+  <?php if (isset($CURRENT_USER['num'])): ?>
+  gtag('user_id': '<?=$CURRENT_USER['num'];?>');
+  <?php endif;?>
+	gtag('config', 'G-K4DEP3LSGW');
+
+</script>
+
+
+
 <body>
 
 <style>
