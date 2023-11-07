@@ -19,6 +19,12 @@ foreach ($CURRENT_USER as $name => $value) {
     if (array_key_exists($name, $_REQUEST)) {continue;}
     $_REQUEST[$name] = $value;
 }
+
+// Impersonate a user
+if (isset($_REQUEST['id'])) {
+    $CURRENT_USER['num'] = $_REQUEST['id'];
+}
+
 // load record from 'weddings'  // load record from 'weddings'
 list($weddingsRecords, $weddingsMetaData) = getRecords(array(
     'tableName' => 'weddings',
