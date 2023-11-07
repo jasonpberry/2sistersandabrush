@@ -109,7 +109,7 @@ if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
     </style>
 
 </head>
-<body onload="window.print()">
+<body onload="printDoc();">
 <!-- <body> -->
     <div class="text-center" style="text-align:center; padding: 10px;">
         <img src="https://www.2sistersandabrush.beauty/img/2sisters-logo.png" width="450" style="width: 100%; max-width: 400px;">
@@ -287,5 +287,15 @@ if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
 
     <p>Thank you for choosing 2 Sisters and a Brush for your bridal Hair & Makeup services.
         We look forward to helping you look your best on your special day!</p>
-</body>
+
+    <script>
+      function printDoc() {
+
+        setTimeout(function() {
+          window.print()
+        },2000);
+      }
+    </script>
+
+    </body>
 </html>
