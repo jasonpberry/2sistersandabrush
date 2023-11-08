@@ -211,7 +211,7 @@ if ($weddingsRecord && is_array($weddingsRecord['services:values'])) {
     <h2>Booking Fee and Payment Schedule:</h2>
     <p>
         A non-refundable booking fee of <strong>$<?=($weddingsRecord['deposit_amount']) ? $weddingsRecord['deposit_amount'] : '200';?></strong> is required via Venmo to secure the date.<br>
-        The remaining balance of <strong>$<?=$weddingsRecord['makeup_total'] + $weddingsRecord['makeup_total'] + $weddingsRecord['travel_fee'] - $weddingsRecord['deposit_amount']?></strong>
+        The remaining balance of <strong>$<?=$weddingsRecord['hair_total'] + $weddingsRecord['makeup_total'] + $weddingsRecord['travel_fee'] - $weddingsRecord['deposit_amount']?></strong>
         is due on or before <strong><?=date("F j, Y", $weddingsRecord['wedding_date:unixtime']);?></strong>.
 
         Payment can be made via <strong>CASH</strong>.
