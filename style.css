@@ -1699,7 +1699,7 @@ blockquote {
 .footer-top ul li{
 	width:100%;
 	float:left;
-	margin:0 0 12px;
+	margin:0 0 20px;
 	color:#999;
 }
 .footer-top ul li:last-child{
@@ -1993,7 +1993,7 @@ h2{
 }
 .footer-widget p,
 .footer-top ul li{
-	font-size:14px;
+	font-size:16px;
 }
 .footer-widget{
 	margin:0 0 30px;
@@ -2120,4 +2120,8 @@ ul.navbar-nav.ml-auto{
 
 img.figlio {
   width: 85%;
+}
+
+a.ext-link {
+	text-decoration: underline !important;
 }
