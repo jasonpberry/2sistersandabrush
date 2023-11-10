@@ -2121,3 +2121,7 @@ ul.navbar-nav.ml-auto{
 img.figlio {
   width: 85%;
 }
+
+a.ext-link {
+	text-decoration: underline !important;
+}
