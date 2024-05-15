@@ -116,7 +116,7 @@ $success = mail($EmailTo, $Subject, $Body, $headers, "-f " . $email);
 
 // redirect to success page
 if ($success && $errorMSG == "") {
-    sendTextMessage('+14438072661', $Subject);
+//    sendTextMessage('+14438072661', $Subject);
     echo "success";
 } else {
     if ($errorMSG == "") {
